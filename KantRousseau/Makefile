@@ -1,5 +1,3 @@
-L2H = latex2html
-DVIPS = dvips
 # Main input (w/o extension)
 MAIN_FNAME=kantrousseau
 # Additional files the main input file depends on
@@ -31,8 +29,6 @@ $(MAIN_FNAME).pdf: $(DEPS) $(IMAGES)
 %.dvi:          %.tex
 		latexmk $<
 
-# Display relevant warnings
-		egrep -i "(Reference|Citation).*undefined" $*.log ; true
 %.png:  %.dia
 	dia -e $@ $<
 
