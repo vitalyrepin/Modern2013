@@ -21,13 +21,13 @@
   \fancyhead[LO]{%
 \begin{tikzpicture}[overlay,remember picture]
       \node[fill=NavyBlue!50,text=white,
-      inner ysep=8pt, inner xsep=15pt,
+      inner ysep=5pt, inner xsep=8pt,
       rounded rectangle,
       execute at begin node={\begin{varwidth}{\textheight}},%<====
       execute at end node={\end{varwidth}},
       rotate=90]
       at ([xshift=9mm,yshift=0mm]current page.west)
-      {\textsf{\textbf{WIKIMEDIA COMMONS}}};
+      {\textsf{\textbf{\tiny WIKIMEDIA COMMONS}}};
     \end{tikzpicture}
         }
   \renewcommand{\headrulewidth}{0pt}
@@ -60,7 +60,7 @@ pdfcontactemail={vitaly.repin@gmail.com},
 pdflang={en}
 }
 
-\newcommand{\pict}[1]{\includegraphics[keepaspectratio,width=.87\textwidth,height=.95\textheight]{#1}}
+\newcommand{\pict}[1]{\includegraphics[keepaspectratio,width=.89\textwidth,height=.95\textheight]{#1}}
 
 \begin{document}
 \maketitle
@@ -143,7 +143,7 @@ pdflang={en}
 \begin{myframe}
 \pictitle{Portait de Baudelaire (Portrait of Charles Baudelaire, Портрет Шарля Бодлера)}{\\ Gustave Courbet, 1849}{Musée Fabre, Montpellier}{http://en.wikipedia.org/wiki/File:Gustave_Courbet_033.jpg}
 
-\includegraphics[keepaspectratio,width=.87\textwidth,height=.9\textheight]{Gustave_Courbet_033.jpg}
+\includegraphics[keepaspectratio,width=.89\textwidth,height=.9\textheight]{Gustave_Courbet_033.jpg}
 \end{myframe}
 
 \begin{myframe}
