@@ -2,6 +2,7 @@
 \fancypagestyle{sideheading}{%
   %% Clear all headers and footers
   \fancyhf{}
+  %% Taken from: http://tex.stackexchange.com/questions/54808/rotated-running-text-in-right-margin
   \fancyhead[LO]{%
 \begin{tikzpicture}[overlay,remember picture]
       \node[fill=NavyBlue!50,text=white,
@@ -12,11 +13,22 @@
       rotate=90]
       at ([xshift=9mm,yshift=0mm]current page.west)
       {\textsf{\textbf{\tiny WIKIMEDIA COMMONS}}};
+      \node at ([xshift=-5mm,yshift=-.48\textheight]current page.east) {\it\thepage};
     \end{tikzpicture}
-        }
-  \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}
-  \fancyfoot[R]{}
+}
+\fancyhead[RE]{%
+\begin{tikzpicture}[overlay,remember picture]
+      \node[fill=NavyBlue!50,text=white,
+      inner ysep=5pt, inner xsep=8pt,
+      rounded rectangle,
+      execute at begin node={\begin{varwidth}{\textheight}},%<====
+      execute at end node={\end{varwidth}},
+      rotate=90]
+      at ([xshift=-9mm,yshift=0mm]current page.east)
+      {\textsf{\textbf{\tiny WIKIMEDIA COMMONS}}};
+     \node at ([xshift=5mm,yshift=-.48\textheight]current page.west) {\it\thepage};
+    \end{tikzpicture}
+}
 }
 
 \pagestyle{sideheading}

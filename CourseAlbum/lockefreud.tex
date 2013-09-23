@@ -1,3 +1,19 @@
+\fancypagestyle{sideheadingnowiki}{%
+  %% Clear all headers and footers
+  \fancyhf{}
+  \fancyhead[LO]{%
+\begin{tikzpicture}[overlay,remember picture]
+    \node at ([xshift=-5mm,yshift=-.48\textheight]current page.east) {\it\thepage};
+    \end{tikzpicture}
+}
+\fancyhead[RE]{%
+\begin{tikzpicture}[overlay,remember picture]
+    \node at ([xshift=5mm,yshift=-.48\textheight]current page.west) {\it\thepage};
+    \end{tikzpicture}
+}
+}
+
+
 %% Background for "History" and "Philosophy" nodes
 \definecolor{historybg}{HTML}{D7DBDF}
 %% Textcolor for "History" and "Philosophy" nodes
@@ -5,11 +21,11 @@
 %% Background for "Art" and "Science" nodes
 \definecolor{scibg}{HTML}{EEEEEE}
 
-\thispagestyle{empty}
+\thispagestyle{sideheadingnowiki}
 \newcommand{\hrefmm}[3]{\href{#1}{\sl\textcolor{#2}{#3}}}
 
 \hspace*{1cm}\begin{tikzpicture}[mindmap,
-every node/.style={concept,circular drop shadow,execute at begin node=\hskip0pt},
+every node/.style={concept,execute at begin node=\hskip0pt},
 root concept/.append style={
 concept color=black, fill=white, line width=1ex, text=black,minimum size=3cm,text width=3cm,font=\large\scshape},
 text=historyfg,
@@ -60,16 +76,17 @@ level 3/.append style={level distance=2.3cm,sibling angle=45}]
 		child { node {\hrefmm{http://en.wikipedia.org/wiki/Madame_Bovary}{black}{1856: Madame Bovary}}}
   	}
 	child [concept ] { node {Paintings}
-		child { node {\hrefmm{http://en.wikipedia.org/wiki/Romanticism}{black}{Romantis\-cism}}
-			child [sibling angle=55] { node {\hrefmm{http://en.wikipedia.org/wiki/Liberty_Leading_the_People}{black}{1830: Liberty Leading the People } }}
-			child[sibling angle=60] { node {\hrefmm{http://en.wikipedia.org/wiki/The_Massacre_at_Chios}{black}{1824: The Massacre at Chios} }}
+		child[sibling angle=40] { node {\hrefmm{http://en.wikipedia.org/wiki/Impressionism}{black}{Impres\-sionism}}
+  			child { node {\hrefmm{http://en.wikipedia.org/wiki/Olympia_(Manet)}{black}{1863: Olympia } }}
 		}
 		child { node {\hrefmm{http://en.wikipedia.org/wiki/Realism_(visual_arts)}{black}{Realism}}
 			child { node {\hrefmm{http://en.wikipedia.org/wiki/The_Stone_Breakers}{black}{1850: The Stone Breakers}}}
 		}
-		child { node {\hrefmm{http://en.wikipedia.org/wiki/Impressionism}{black}{Impres\-sionism}}
-  			child { node {\hrefmm{http://en.wikipedia.org/wiki/Olympia_(Manet)}{black}{1863: Olympia } }}
-		}	
+		child[sibling angle=35] { node {\hrefmm{http://en.wikipedia.org/wiki/Romanticism}{black}{Romantis\-cism}}
+			child [sibling angle=55] { node {\hrefmm{http://en.wikipedia.org/wiki/Liberty_Leading_the_People}{black}{1830: Liberty Leading the People } }}
+			child[sibling angle=60] { node {\hrefmm{http://en.wikipedia.org/wiki/The_Massacre_at_Chios}{black}{1824: The Massacre at Chios} }}
+		}
+		child[sibling angle=37] { node {\hrefmm{http://en.wikipedia.org/wiki/Neoclassicism}{black}{Neoclas\-sicism}} }
   	}
   };
 \end{tikzpicture}
