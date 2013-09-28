@@ -1,28 +1,6 @@
-\fancypagestyle{sideheadingnowiki}{%
-  %% Clear all headers and footers
-  \fancyhf{}
-  \fancyhead[LO]{%
-\begin{tikzpicture}[overlay,remember picture]
-    \node at ([xshift=-5mm,yshift=-.48\textheight]current page.east) {\it\thepage};
-    \end{tikzpicture}
-}
-\fancyhead[RE]{%
-\begin{tikzpicture}[overlay,remember picture]
-    \node at ([xshift=5mm,yshift=-.48\textheight]current page.west) {\it\thepage};
-    \end{tikzpicture}
-}
-}
-
-
-%% Background for "History" and "Philosophy" nodes
-\definecolor{historybg}{HTML}{D7DBDF}
-%% Textcolor for "History" and "Philosophy" nodes
-\definecolor{historyfg}{HTML}{77797C}
-%% Background for "Art" and "Science" nodes
-\definecolor{scibg}{HTML}{EEEEEE}
-
+%% From Locke to Freud: mindmap
 \thispagestyle{sideheadingnowiki}
-\newcommand{\hrefmm}[3]{\href{#1}{\sl\textcolor{#2}{#3}}}
+\addcontentsline{toc}{section}{From Locke to Freud: Art, Philosophy, Science and History. Mindmap}
 
 \hspace*{1cm}\begin{tikzpicture}[mindmap,
 every node/.style={concept,execute at begin node=\hskip0pt},

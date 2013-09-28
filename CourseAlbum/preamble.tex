@@ -1,0 +1,102 @@
+%% Preamble
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french,english,russian]{babel}
+\usepackage[pdftex]{graphicx}
+\usepackage{cmap}
+\usepackage{hyperxmp}
+\usepackage[colorlinks,linkcolor=blue]{hyperref}
+\usepackage[landscape,left=0.1cm, right=.1cm, top=0.1cm, bottom=.1cm,paperwidth=7in,paperheight=9in]{geometry}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage{calc}
+\usetikzlibrary{shapes.misc}
+\usetikzlibrary{mindmap}
+
+\usepackage{varwidth}
+\usepackage{fancyhdr}
+
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newcommand{\myhref}[2]{\selectlanguage{french}\textcolor{blue}{\href{#1}{\selectlanguage{russian}\textcolor{blue}{#2}}}\selectlanguage{russian}}
+\newcommand{\hrefmm}[3]{\href{#1}{\sl\textcolor{#2}{#3}}}
+
+\fancypagestyle{sideheadingnowiki}{%
+  %% Clear all headers and footers
+  \fancyhf{}
+  \fancyhead[LO]{%
+\begin{tikzpicture}[overlay,remember picture]
+    \node at ([xshift=-5mm,yshift=-.48\textheight]current page.east) {\it\thepage};
+    \end{tikzpicture}
+}
+\fancyhead[RE]{%
+\begin{tikzpicture}[overlay,remember picture]
+    \node at ([xshift=5mm,yshift=-.48\textheight]current page.west) {\it\thepage};
+    \end{tikzpicture}
+}
+}
+
+\fancypagestyle{sideheading}{%
+  %% Clear all headers and footers
+  \fancyhf{}
+  %% Taken from: http://tex.stackexchange.com/questions/54808/rotated-running-text-in-right-margin
+  \fancyhead[LO]{%
+\begin{tikzpicture}[overlay,remember picture]
+      \node[fill=NavyBlue!50,text=white,
+      inner ysep=5pt, inner xsep=8pt,
+      rounded rectangle,
+      execute at begin node={\begin{varwidth}{\textheight}},%<====
+      execute at end node={\end{varwidth}},
+      rotate=90]
+      at ([xshift=9mm,yshift=0mm]current page.west)
+      {\textsf{\textbf{\tiny WIKIMEDIA COMMONS}}};
+      \node at ([xshift=-5mm,yshift=-.48\textheight]current page.east) {\it\thepage};
+    \end{tikzpicture}
+}
+\fancyhead[RE]{%
+\begin{tikzpicture}[overlay,remember picture]
+      \node[fill=NavyBlue!50,text=white,
+      inner ysep=5pt, inner xsep=8pt,
+      rounded rectangle,
+      execute at begin node={\begin{varwidth}{\textheight}},%<====
+      execute at end node={\end{varwidth}},
+      rotate=90]
+      at ([xshift=-9mm,yshift=0mm]current page.east)
+      {\textsf{\textbf{\tiny WIKIMEDIA COMMONS}}};
+     \node at ([xshift=5mm,yshift=-.48\textheight]current page.west) {\it\thepage};
+    \end{tikzpicture}
+}
+}
+
+%% Background for "History" and "Philosophy" nodes
+\definecolor{historybg}{HTML}{D7DBDF}
+%% Textcolor for "History" and "Philosophy" nodes
+\definecolor{historyfg}{HTML}{77797C}
+%% Background for "Art" and "Science" nodes
+\definecolor{scibg}{HTML}{EEEEEE}
+
+\author{Vitaly Repin \thanks{Thanks to Prof. Michael S. Roth, Wesleyan University and Coursera}}
+\title{The Modern and the Postmodern\\  \textit{\small Visual arts discussed in the course on the Modern and the Postmodern @ Wesleyan University}}
+\date{September 2013}
+
+\hypersetup{%
+pdftitle={%
+The Modern and the Postmodern. Visual arts discussed in the course on the Modern and the Postmodern @ Wesleyan University},
+pdfauthor={Vitaly Repin},
+pdfauthortitle={Coursera student},
+pdfcopyright={This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License},
+pdfsubject={The Modern and the Postmodern},
+pdfkeywords={modern,postmodern,manet,monet,courbet,delacroix},
+pdflicenseurl={http://creativecommons.org/licenses/by-sa/3.0/},
+pdfcaptionwriter={Vitaly Repin},
+pdfcontactcity={Espoo},
+pdfcontactcountry={Finland},
+pdfcontactemail={vitaly.repin@gmail.com},
+pdflang={en}
+}
+

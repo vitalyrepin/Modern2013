@@ -1,0 +1,67 @@
+%% Virginia Woolf, To the Lighthouse. Mindmap
+\addcontentsline{toc}{section}{To the Lighthouse by Virginia Woolf. Mindmap}
+\thispagestyle{sideheadingnowiki}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+\begin{center}
+\resizebox{!}{.93\textheight}{\begin{tikzpicture}[mindmap,
+every node/.style={concept,execute at begin node=\hskip0pt},
+root concept/.append style={
+concept color=black, fill=white, line width=1ex, text=black,minimum size=3cm,text width=3cm,font=\large\scshape},
+text=historyfg,
+concept color=historybg,grow cyclic,
+level 1/.append style={level distance=3.7cm,sibling angle=90},
+level 2/.append style={level distance=3cm,sibling angle=45},
+level 3/.append style={level distance=2.3cm,sibling angle=45},
+remark/.style={
+rectangle,
+sloped,
+minimum size=4mm,
+very thin,
+color=white,
+text=black,
+font=\itshape
+}]
+\node[root concept] (root) {To the Lighthouse (1927)}
+  child [concept color=scibg,text=black] { node {Lily Briscoe}
+  	child [concept] { node {Painter}}
+	child [concept] { node {Difficulties with men}}
+	child [concept] { node {What is the appropriate distance?}
+		child [concept] { node {Painterly problem}}
+		child [concept] { node {Human problem}}}
+  }
+  child [concept] { node {Charles Tansley}
+ 	child [concept] { node {Proud to be lower-class person}}
+	child [concept] { node {Enlighten\-ment figure}}
+	child [concept] { node {Hard worker}}
+	child [concept] { node {\textsl{Little} atheist}}
+	child [concept] { node {Criticizes everything}}
+  }
+  child [concept color=scibg,text=black,level distance=4.3cm,sibling angle=85] { node (mr) {Mr Ramsay}
+  	child [concept] { node {Trying to understand the world}
+		child [concept] { node (epi) {Episte\-mology}}
+		child [concept] { node (onto) {Ontology}}
+		child [concept] { node (an) {Analytical philo\-sopher}}
+  	}
+	child [concept,sibling angle=56,level distance=3.2cm] { node {Loved and hated} }
+	child [concept,sibling angle=15] { node {Monster of knowledge }}
+	child [concept,sibling angle=30,level distance=2.8cm] {node (talk) {Talks}}
+	}
+  child [concept,sibling angle=95,level distance=4.3cm] { node (mrs) {Mrs Ramsay}
+  	child [concept,level distance=3.6cm] { node (feel) {Feels} }
+	child [concept] { node {Connects people} }
+	child [concept] {node {Eros, combinatory force}}
+	child [concept] {node {World maker}}
+	child [concept] {node {Beautiful}}
+  };
+  \node[extra concept, color=historybg,text=historyfg] (alone) at (10,-1) {Am I alone???};
+  \begin{pgfonlayer}{background}
+  	\draw [concept connection] (mr) edge node[remark,above=3.5pt] {Knowledge} node [remark,below=3.5pt] {Intimacy} (mrs);
+  	\draw [concept connection] (talk) edge node[remark,above=3.5pt] {What is real?} (feel);
+	\draw [concept connection,-stealth] (epi) edge (alone);
+	\draw [concept connection,-stealth] (an) edge (alone);
+	\draw [concept connection,-stealth] (onto) edge (alone);
+  \end{pgfonlayer}
+\end{tikzpicture}}
+\end{center}
