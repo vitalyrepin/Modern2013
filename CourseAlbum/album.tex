@@ -2,13 +2,18 @@
 %% Preamble: common defs, usepackages etc
 \input{preamble}
 
+
 \begin{document}
+\thispagestyle{empty}
 \maketitle
+\pagestyle{toc}
 \newpage
-\newgeometry{left=3cm,bottom=0.1cm}
+\thispagestyle{toc}
+\newgeometry{left=3cm,bottom=2cm,right=2cm}
 
 \begin{NoHyper}
 \selectlanguage{english}
+\pdfbookmark{\contentsname}{Contents}
 \tableofcontents
 \end{NoHyper}
 

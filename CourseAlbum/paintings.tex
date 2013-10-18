@@ -1,14 +1,23 @@
 %% Paintings
+\pdfbookmark[2]{Paintings of the Modern}{ModernPaintings}
+\phantomsection
 \addcontentsline{toc}{section}{Paintings of the Modern}
+
+\newcounter{artist}\setcounter{artist}{0}
+\newcommand{\newartist}[1]{\stepcounter{artist}\pdfbookmark[3]{#1}{\arabic{artist}}\addcontentsline{toc}{subsection}{#1}}
 
 \pagestyle{sideheading}
 
-\newcommand{\pictitle}[6]{\addcontentsline{toc}{subsection}{#1 (#2)}%
+\newcounter{pict}\setcounter{pict}{0}
+\newcommand{\pictitle}[6]{\stepcounter{pict}\pdfbookmark[4]{#1 (#2)}{\arabic{artist}-\arabic{pict}}\addcontentsline{toc}{subsubsection}{#1 (#2)}%
 \myhref{#6}{\textsf{\textbf{#1 (#2, #3).}}} \textit{#4.} #5.\bigskip}
 
 \newenvironment{myframe}{\begin{center}}{\end{center}\newpage}
 
 \newcommand{\pict}[1]{\includegraphics[keepaspectratio,width=.89\textwidth,height=.95\textheight]{#1}}
+\newcommand{\pictR}[1]{\includegraphics[keepaspectratio,angle=90,width=.89\textwidth,height=.95\textheight]{#1}}
+
+\newartist{Eugène Delacroix (1798--1863)}
 
 \begin{myframe}
 \pictitle{La Mort de Sardanapale}{Death of Sardanapalus}{Смерть Сарданапала}{Eugène Delacroix, 1827}{Louvre, Paris}{http://commons.wikimedia.org/wiki/File:Delacroix_-_La_Mort_de_Sardanapale_(1827).jpg}
@@ -29,6 +38,7 @@
 \pict{Eugene_Delacroix_-_Le_28_Juillet_La_Liberte_guidant_le_peuple.jpg}
 \end{myframe}
 
+\newartist{Gustave Courbet (1819--1877)}
 \begin{myframe}
 \pictitle{Le Désespéré}{Self portrait}{Автопортрет}{Gustave Courbet, 1841}{Private collection}{http://commons.wikimedia.org/wiki/File:Gustave_Courbet_-_Le_Désespéré_(1843).jpg}
 
@@ -47,6 +57,11 @@
 \pict{Courbet_Sleep.jpg}
 \end{myframe}
 
+\begin{myframe}
+\pictitle{Portait de Baudelaire}{Portrait of Charles Baudelaire}{Портрет Шарля Бодлера}{\\ Gustave Courbet, 1849}{Musée Fabre, Montpellier}{http://en.wikipedia.org/wiki/File:Gustave_Courbet_033.jpg}
+
+\includegraphics[keepaspectratio,width=.89\textwidth,height=.9\textheight]{Gustave_Courbet_033.jpg}
+\end{myframe}
 
 \begin{myframe}
 \pictitle{Un enterrement à Ornans}{A Burial At Ornans}{Похороны в Орнане}{Gustave Courbet, 1850}{Musée d'Orsay, Paris}{http://commons.wikimedia.org/wiki/File:Gustave_Courbet_-_A_Burial_at_Ornans_-_Google_Art_Project_2.jpg}
@@ -54,6 +69,7 @@
 \pict{Gustave_Courbet_-_A_Burial_at_Ornans_-_Google_Art_Project_2.jpg}
 \end{myframe}
 
+\newartist{Édouard Manet (1832--1883)}
 \begin{myframe}
 \pictitle{Segelboote in Argenteuil}{Boating in Argenteuil}{Яхты в Аржантёйе}{Édouard Manet, 1874}{National Museum Cardiff, Wales}{http://commons.wikimedia.org/wiki/File:Édouard_Manet_-_Segelboote_in_Argenteuil.jpg}
 
@@ -85,20 +101,131 @@
 \end{myframe}
 
 \begin{myframe}
-\pictitle{Portait de Baudelaire}{Portrait of Charles Baudelaire}{Портрет Шарля Бодлера}{\\ Gustave Courbet, 1849}{Musée Fabre, Montpellier}{http://en.wikipedia.org/wiki/File:Gustave_Courbet_033.jpg}
+\pictitle{Un bar aux Folies Bergère}{A Bar at the Folies-Bergère}{Бар в «Фоли-Бержер»}{Édouard Manet, 1882}{Courtauld Gallery, London}{http://en.wikipedia.org/wiki/File:Edouard_Manet,_A_Bar_at_the_Folies-Bergère.jpg}
 
-\includegraphics[keepaspectratio,width=.89\textwidth,height=.9\textheight]{Gustave_Courbet_033.jpg}
+\pict{Edouard_Manet,_A_Bar_at_the_Folies-Bergere.jpg}
 \end{myframe}
 
+\newartist{Constantin Guys (1802-1892)}
 \begin{myframe}
 \pictitle{La Loge de l'opéra}{Loge}{Ложа}{Constantin Guys}{Albertina, Vienna}{http://commons.wikimedia.org/wiki/File:Constantin-Ernest-Adolphe-Hyacinthe_Guys_001.jpg?uselang=ru}
 
 \pict{Constantin-Ernest-Adolphe-Hyacinthe_Guys_001.jpg}
 \end{myframe}
 
+\newartist{Camille Pissarro (1830--1903) }
+\begin{myframe}
+\pictitle{Port-Marly, le lavoir dit à tort le lavoir, Pontoise}{Port-Marly, the wash, Pontoise}{Прачечная, Порт Марли}{\\ Camille Pissarro, 1872}{Musée d'Orsay, Paris}{http://commons.wikimedia.org/wiki/File:Camille_Pissarro_045.jpg}
+
+\includegraphics[keepaspectratio,width=.89\textwidth,height=.9\textheight]{Camille_Pissarro_045.jpg}
+\end{myframe}
 
 \begin{myframe}
-\pictitle{Un bar aux Folies Bergère}{A Bar at the Folies-Bergère}{Бар в «Фоли-Бержер»}{Édouard Manet, 1882}{Courtauld Gallery, London}{http://en.wikipedia.org/wiki/File:Edouard_Manet,_A_Bar_at_the_Folies-Bergère.jpg}
+\pictitle{Gelee blanche}{Hoarfrost}{Изморозь}{Camille Pissarro, 1873}{Musée d'Orsay, Paris}{http://commons.wikimedia.org/wiki/File:Camille_Pissarro,_Gelee_blanche_(Hoarfrost),_1873.jpg} 
 
-\pict{Edouard_Manet,_A_Bar_at_the_Folies-Bergere.jpg}
+\pict{Camille_Pissarro,_Gelee_blanche_(Hoarfrost),_1873.jpg}
 \end{myframe}
+
+\newartist{Henri de Toulouse-Lautrec (1864--1901)}
+\begin{myframe}
+\pictitle{Divan Japonais}{Poster}{Плакат}{Henri de Toulouse-Lautrec, 1892--1893}{Private collection}{http://en.wikipedia.org/wiki/File:Henri_de_Toulouse-Lautrec_019.jpg}
+
+\pictR{Henri_de_Toulouse-Lautrec_019.jpg}
+\end{myframe}
+
+\begin{myframe}
+\pictitle{Les Deux Amies}{The Two Friends}{Два друга}{Henri de Toulouse-Lautrec, 1894}{Tate Britain, London}{http://en.wikipedia.org/wiki/File:Henri_de_Toulouse-Lautrec_014.jpg}
+\vspace*{.5cm}
+
+\pictR{Henri_de_Toulouse-Lautrec_014.jpg}
+\end{myframe}
+
+\begin{myframe}
+\pictitle{Le sofa}{The Sofa}{Софа}{Henri de Toulouse-Lautrec, 1894--1896}{Metropolitan Museum of Art, NYC}{http://en.wikipedia.org/wiki/File:Henri_de_Toulouse-Lautrec_009.jpg}
+
+\pict{Henri_de_Toulouse-Lautrec_009.jpg}
+\end{myframe}
+
+\newartist{Edgar Degas (1834--1917)}
+\begin{myframe}
+\pictitle{Repasseuses}{Two ironing women}{Гладильщицы}{Edgar Degas, 1884}{Musée d'Orsay, Paris}{http://commons.wikimedia.org/wiki/File:Edgar_Germain_Hilaire_Degas_084.jpg}
+
+\pict{Edgar_Germain_Hilaire_Degas_084.jpg}
+\end{myframe}
+
+\begin{myframe}
+\pictitle{Danseuses en bleu}{Dancers in Blue}{Две голубые танцовщицы}{Edgar Degas, 1898}{Musée d'Orsay, Paris}{http://commons.wikimedia.org/wiki/File:Degas_-_Zwei_Tänzerinnen.jpg}
+
+\pict{Degas_-_Zwei_Tanzerinnen.jpg}
+\end{myframe}
+
+\begin{myframe}
+\pictitle{Le tub}{The Tub}{Ванна}{Edgar Degas, 1886}{Farmington, Connecticut}{http://en.wikipedia.org/wiki/File:Edgar_Germain_Hilaire_Degas_032.jpg}
+
+\pict{Edgar_Germain_Hilaire_Degas_032.jpg}
+\end{myframe}
+
+\begin{myframe}
+\pictitle{La Toilette}{Woman Combing her Hair}{Причёсывающаяся женщина}{Edgar Degas, 1885}{State Hermitage Museum, St. Petersburg}{http://en.wikipedia.org/wiki/File:Edgar_Germain_Hilaire_Degas_029.jpg}
+
+\pict{Edgar_Germain_Hilaire_Degas_029.jpg}
+\end{myframe}
+
+\begin{myframe}
+\pictitle{Après le bain, femme nue s'essuyant la nuque}{After the Bath}{После купания}{Edgar Degas, 1898}{Musée d'Orsay, Paris}{http://en.wikipedia.org/wiki/File:Edgar_Germain_Hilaire_Degas_045.jpg}
+
+\pict{Edgar_Germain_Hilaire_Degas_045.jpg}
+\end{myframe}
+
+\begin{myframe}
+\pictitle{La repasseuse}{Ironing woman}{Гладильщица}{Edgar Degas, 1869}{Neue Pinakothek, Munich}{http://commons.wikimedia.org/wiki/File:Degas_-_Die_Büglerin.jpg}
+
+\pictR{Degas_-_Die_Buglerin.jpg}
+\end{myframe}
+
+\begin{myframe}
+\pictitle{L'Absinthe}{Glass of Absinthe}{Абсент}{Edgar Degas, 1876}{Musée d'Orsay, Paris}{http://commons.wikimedia.org/wiki/File:Edgar_Germain_Hilaire_Degas_012.jpg}
+
+\pictR{Edgar_Germain_Hilaire_Degas_012.jpg}
+\end{myframe}
+
+\newartist{Paul Cézanne (1839--1906)}
+\begin{myframe}
+\pictitle{Mont Sainte-Victoire}{Mountain Sainte-Victoire}{Гора Святой Виктории}{\\ Paul Cézanne, 1904--1906}{Sammlung C. S. Tyson, Philadelphia}{http://commons.wikimedia.org/wiki/File:Paul_Cézanne_109.jpg}
+
+\includegraphics[keepaspectratio,width=.89\textwidth,height=.9\textheight]{Paul_Cezanne_109.jpg}
+\end{myframe}
+
+\begin{myframe}
+\pictitle{Mont Sainte--Victoire}{Mountain Sainte--Victoire --- view from Lauves}{Гора Святой Виктории}{\\ Paul Cézanne}{Unknown location}{http://commons.wikimedia.org/wiki/File:Cezanne_-_Mont_Sainte_Victoire_von_Lauves_aus_gesehen_2.jpg}
+
+\includegraphics[keepaspectratio,width=.89\textwidth,height=.9\textheight]{Cezanne_-_Mont_Sainte_Victoire_von_Lauves_aus_gesehen_2.jpg}
+\end{myframe}
+
+\newartist{Juan Gris (1887--1927)}
+\begin{myframe}
+\pictitle{Violon et guitare}{Violin and guitar}{Скрипка и гитара}{Juan Gris, 1913}{Queen Sofia Museum, Madrid}{http://commons.wikimedia.org/wiki/File:1913_Gris_violin_and_guitar_anagoria.JPG}
+
+\pictR{1913_Gris_violin_and_guitar_anagoria.jpg}
+\end{myframe}
+
+\begin{myframe}
+\pictitle{Le Petit Déjeuner}{Breakfast}{Завтрак}{Juan Gris, 1914}{Museum of Modern Art,  NYC}{http://commons.wikimedia.org/wiki/File:1914_Gris_Le_Petit_Déjeuner.jpg}
+
+\pictR{1914_Gris_Le_Petit_Dejeuner.jpg}
+\end{myframe}
+
+\newartist{Marcel Duchamp (1887--1968)}
+\begin{myframe}
+\pictitle{Nu descendant un escalier №\,2}{Nude Descending a Staircase, №\,2}{Обнаженная, спускающаяся по лестнице, №\,2}{\\ Marcel Duchamp, 1912}{Philadelphia Museum of Art}{http://en.wikipedia.org/wiki/File:Duchamp_-_Nude_Descending_a_Staircase.jpg}
+\vspace*{.7cm}
+
+\includegraphics[angle=90,keepaspectratio,width=.89\textwidth,height=.9\textheight]{Duchamp_-_Nude_Descending_a_Staircase.jpg}
+\end{myframe}
+
+\begin{myframe}
+\pictitle{Fountain}{Fountain}{Фонтан}{Marcel Duchamp, 1912}{Lost}{http://en.wikipedia.org/wiki/File:Marcel_Duchamp.jpg}
+
+\pict{Marcel_Duchamp.jpg}
+\end{myframe}
+
