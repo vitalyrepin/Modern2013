@@ -5,7 +5,7 @@
 \usepackage[pdftex]{graphicx}
 \usepackage{cmap}
 \usepackage{hyperxmp}
-\usepackage[colorlinks,linkcolor=blue,bookmarks=false]{hyperref}
+\usepackage[hidelinks,colorlinks=false,linkcolor=blue,bookmarks=false]{hyperref}
 \usepackage[landscape,left=0.1cm, right=.1cm, top=0.1cm, bottom=.1cm,paperwidth=7in,paperheight=9in]{geometry}
 
 \usepackage[dvipsnames]{xcolor}
@@ -16,14 +16,16 @@
 
 \usepackage{varwidth}
 \usepackage{fancyhdr}
-
+\usepackage{copyrightbox}
 \usepackage{tocloft}
+\usepackage{ifthen,changepage}
+
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-\newcommand{\myhref}[2]{\selectlanguage{french}\textcolor{blue}{\href{#1}{\selectlanguage{russian}\textcolor{blue}{#2}}}\selectlanguage{russian}}
+\newcommand{\myhref}[2]{\selectlanguage{french}{\href{#1}{\selectlanguage{russian}{#2}}}\selectlanguage{russian}}
 \newcommand{\hrefmm}[3]{\href{#1}{\sl\textcolor{#2}{#3}}}
 
 \fancypagestyle{sideheadingnowiki}{%
@@ -51,38 +53,6 @@
   \fancyfoot[LE]{\it\thepage}
 }
 
-\fancypagestyle{sideheading}{%
-  %% Clear all headers and footers
-  \fancyhf{}
-  %% Taken from: http://tex.stackexchange.com/questions/54808/rotated-running-text-in-right-margin
-  \fancyhead[LO]{%
-\begin{tikzpicture}[overlay,remember picture]
-      \node[fill=NavyBlue!50,text=white,
-      inner ysep=5pt, inner xsep=8pt,
-      rounded rectangle,
-      execute at begin node={\begin{varwidth}{\textheight}},%<====
-      execute at end node={\end{varwidth}},
-      rotate=90]
-      at ([xshift=9mm,yshift=0mm]current page.west)
-      {\textsf{\textbf{\tiny WIKIMEDIA COMMONS}}};
-      \node at ([xshift=-5mm,yshift=-.48\textheight]current page.east) {\it\thepage};
-    \end{tikzpicture}
-}
-\fancyhead[RE]{%
-\begin{tikzpicture}[overlay,remember picture]
-      \node[fill=NavyBlue!50,text=white,
-      inner ysep=5pt, inner xsep=8pt,
-      rounded rectangle,
-      execute at begin node={\begin{varwidth}{\textheight}},%<====
-      execute at end node={\end{varwidth}},
-      rotate=90]
-      at ([xshift=-9mm,yshift=0mm]current page.east)
-      {\textsf{\textbf{\tiny WIKIMEDIA COMMONS}}};
-     \node at ([xshift=5mm,yshift=-.48\textheight]current page.west) {\it\thepage};
-    \end{tikzpicture}
-}
-}
-
 %% Background for "History" and "Philosophy" nodes
 \definecolor{historybg}{HTML}{D7DBDF}
 %% Textcolor for "History" and "Philosophy" nodes
@@ -92,7 +62,7 @@
 
 \author{Vitaly Repin \thanks{Thanks to Prof. Michael S. Roth, Wesleyan University and Coursera}}
 \title{The Modern and the Postmodern\\  \textit{\small Visual arts discussed in the course on the Modern and the Postmodern @ Wesleyan University}}
-\date{September 2013}
+\date{October 2013}
 
 \hypersetup{%
 pdftitle={%

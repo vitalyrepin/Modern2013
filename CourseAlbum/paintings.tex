@@ -6,7 +6,7 @@
 \newcounter{artist}\setcounter{artist}{0}
 \newcommand{\newartist}[1]{\stepcounter{artist}\pdfbookmark[3]{#1}{\arabic{artist}}\addcontentsline{toc}{subsection}{#1}}
 
-\pagestyle{sideheading}
+\pagestyle{sideheadingnowiki}
 
 \newcounter{pict}\setcounter{pict}{0}
 \newcommand{\pictitle}[6]{\stepcounter{pict}\pdfbookmark[4]{#1 (#2)}{\arabic{artist}-\arabic{pict}}\addcontentsline{toc}{subsubsection}{#1 (#2)}%
@@ -14,8 +14,22 @@
 
 \newenvironment{myframe}{\begin{center}}{\end{center}\newpage}
 
-\newcommand{\pict}[1]{\includegraphics[keepaspectratio,width=.89\textwidth,height=.95\textheight]{#1}}
-\newcommand{\pictR}[1]{\includegraphics[keepaspectratio,angle=90,width=.89\textwidth,height=.95\textheight]{#1}}
+%% There are several different copyrights in use. Let's copy them (licensing terms) word-by-word from Wikimedia. 
+\def\publicDomain{This work is in the public domain in the USA, and those countries with a copyright term of life of the author plus 100 years or less.}
+\def\publicDomanAlt{This work is in the public domain in countries and areas where the copyright term is the author's life plus 100 years or less.}
+\def\publicDomainWorld{The work of art depicted in this image and the reproduction thereof are in the public domain worldwide.}
+\def\publicDomainEighty{This work is in the public domain in those countries with a copyright term of life of the author plus 80 years or less.}
+
+\let\license\publicDomain
+\newcommand{\pictRaw}[3][]{\copyrightbox[#2]{\includegraphics[#1 keepaspectratio,width=.89\textwidth,height=.9\textheight]{#3}}{\centerline{\tiny\sffamily\license}}}
+%% Copyright box: for odd pages appears at right side. For even pages at left
+\newcommand{\pict}[1]{\checkoddpage%
+\ifthenelse{\boolean{oddpage}}{\pictRaw{l}{#1}}{\pictRaw{r}{#1}}%
+}
+
+\newcommand{\pictR}[1]{\checkoddpage%
+\ifthenelse{\boolean{oddpage}}{\pictRaw[angle=90,]{l}{#1}}{\pictRaw[angle=90,]{r}{#1}}%
+}
 
 \newartist{Eugène Delacroix (1798--1863)}
 
@@ -29,20 +43,24 @@
 \begin{myframe}
 \pictitle{Scène des massacres de Scio}{The Massacre at Chios}{Резня на Хиосе}{Eugène Delacroix, 1824}{Louvre, Paris}{http://commons.wikimedia.org/wiki/File:Eugène_Delacroix_-_Le_Massacre_de_Scio.jpg}
 
-\pict{Eugene_Delacroix_-_Le_Massacre_de_Scio}
+\pictR{Eugene_Delacroix_-_Le_Massacre_de_Scio}
 \end{myframe}
 
-\begin{myframe}
+%% Special treatment of this painting
+\begin{center}
 \pictitle{La Liberté guidant le peuple}{Liberty Leading the People}{Свобода, ведущая народ; Свобода на баррикадах}{\\ Eugène Delacroix, 1830}{Louvre-Lens, Lens}{http://commons.wikimedia.org/wiki/File:Eugène_Delacroix_-_Le_28_Juillet._La_Liberté_guidant_le_peuple.jpg}
-
-\pict{Eugene_Delacroix_-_Le_28_Juillet_La_Liberte_guidant_le_peuple.jpg}
-\end{myframe}
+\end{center}
+\vspace*{-1cm}
+\centerline{\pict{Eugene_Delacroix_-_Le_28_Juillet_La_Liberte_guidant_le_peuple.jpg}}
+\newpage
 
 \newartist{Gustave Courbet (1819--1877)}
 \begin{myframe}
 \pictitle{Le Désespéré}{The Desperate Man (self-portrait)}{Отчаявшийся (автопортрет)}{Gustave Courbet, 1841}{Private collection}{http://commons.wikimedia.org/wiki/File:Gustave_Courbet_-_Le_Désespéré_(1843).jpg}
 
+\let\license\publicDomanAlt
 \pict{Gustave_Courbet_-_self_(1843)}
+\let\license\publicDomain
 \end{myframe}
 
 \begin{myframe}
@@ -57,16 +75,18 @@
 \pict{Courbet_Sleep.jpg}
 \end{myframe}
 
-\begin{myframe}
+%% Special treatment of this painting
+\begin{center}
 \pictitle{Portait de Baudelaire}{Portrait of Charles Baudelaire}{Портрет Шарля Бодлера}{\\ Gustave Courbet, 1849}{Musée Fabre, Montpellier}{http://en.wikipedia.org/wiki/File:Gustave_Courbet_033.jpg}
-
-\includegraphics[keepaspectratio,width=.89\textwidth,height=.9\textheight]{Gustave_Courbet_033.jpg}
-\end{myframe}
+\end{center}
+\vspace*{-1cm}
+\centerline{\pict{Gustave_Courbet_033.jpg}}
+\newpage
 
 \begin{myframe}
 \pictitle{Un enterrement à Ornans}{A Burial At Ornans}{Похороны в Орнане}{Gustave Courbet, 1850}{Musée d'Orsay, Paris}{http://commons.wikimedia.org/wiki/File:Gustave_Courbet_-_A_Burial_at_Ornans_-_Google_Art_Project_2.jpg}
 
-\pict{Gustave_Courbet_-_A_Burial_at_Ornans_-_Google_Art_Project_2.jpg}
+\pictRaw{b}{Gustave_Courbet_-_A_Burial_at_Ornans_-_Google_Art_Project_2.jpg}
 \end{myframe}
 
 \newartist{Édouard Manet (1832--1883)}
@@ -108,17 +128,19 @@
 
 \newartist{Constantin Guys (1802-1892)}
 \begin{myframe}
-\pictitle{La Loge de l'opéra}{Loge}{Ложа}{Constantin Guys}{Albertina, Vienna}{http://commons.wikimedia.org/wiki/File:Constantin-Ernest-Adolphe-Hyacinthe_Guys_001.jpg?uselang=ru}
+\pictitle{La Loge de l'opéra}{Loge}{Ложа}{Constantin Guys}{Albertina, Vienna}{http://commons.wikimedia.org/wiki/File:Constantin-Ernest-Adolphe-Hyacinthe_Guys_001.jpg?uselang=en}
 
 \pict{Constantin-Ernest-Adolphe-Hyacinthe_Guys_001.jpg}
 \end{myframe}
 
 \newartist{Camille Pissarro (1830--1903) }
-\begin{myframe}
+%% Special treatment of this painting
+\begin{center}
 \pictitle{Port-Marly, le lavoir dit à tort le lavoir, Pontoise}{Port-Marly, the wash, Pontoise}{Прачечная, Порт Марли}{\\ Camille Pissarro, 1872}{Musée d'Orsay, Paris}{http://commons.wikimedia.org/wiki/File:Camille_Pissarro_045.jpg}
-
-\includegraphics[keepaspectratio,width=.89\textwidth,height=.9\textheight]{Camille_Pissarro_045.jpg}
-\end{myframe}
+\end{center}
+\vspace*{-.6cm}
+\centerline{\pict{Camille_Pissarro_045.jpg}}
+\newpage
 
 \begin{myframe}
 \pictitle{Gelee blanche}{Hoarfrost}{Изморозь}{Camille Pissarro, 1873}{Musée d'Orsay, Paris}{http://commons.wikimedia.org/wiki/File:Camille_Pissarro,_Gelee_blanche_(Hoarfrost),_1873.jpg} 
@@ -130,6 +152,7 @@
 \begin{myframe}
 \pictitle{Divan Japonais}{Poster}{Плакат}{Henri de Toulouse-Lautrec, 1892--1893}{Private collection}{http://en.wikipedia.org/wiki/File:Henri_de_Toulouse-Lautrec_019.jpg}
 
+\let\license\publicDomainWorld
 \pictR{Henri_de_Toulouse-Lautrec_019.jpg}
 \end{myframe}
 
@@ -150,6 +173,7 @@
 \begin{myframe}
 \pictitle{Repasseuses}{Two ironing women}{Гладильщицы}{Edgar Degas, 1884}{Musée d'Orsay, Paris}{http://commons.wikimedia.org/wiki/File:Edgar_Germain_Hilaire_Degas_084.jpg}
 
+\let\license\publicDomainWorld
 \pict{Edgar_Germain_Hilaire_Degas_084.jpg}
 \end{myframe}
 
@@ -162,18 +186,21 @@
 \begin{myframe}
 \pictitle{Le tub}{The Tub}{Ванна}{Edgar Degas, 1886}{Farmington, Connecticut}{http://en.wikipedia.org/wiki/File:Edgar_Germain_Hilaire_Degas_032.jpg}
 
+\let\license\publicDomainWorld
 \pict{Edgar_Germain_Hilaire_Degas_032.jpg}
 \end{myframe}
 
 \begin{myframe}
 \pictitle{La Toilette}{Woman Combing her Hair}{Причёсывающаяся женщина}{Edgar Degas, 1885}{State Hermitage Museum, St. Petersburg}{http://en.wikipedia.org/wiki/File:Edgar_Germain_Hilaire_Degas_029.jpg}
 
+\let\license\publicDomainWorld
 \pict{Edgar_Germain_Hilaire_Degas_029.jpg}
 \end{myframe}
 
 \begin{myframe}
 \pictitle{Après le bain, femme nue s'essuyant la nuque}{After the Bath}{После купания}{Edgar Degas, 1898}{Musée d'Orsay, Paris}{http://en.wikipedia.org/wiki/File:Edgar_Germain_Hilaire_Degas_045.jpg}
 
+\let\license\publicDomainWorld
 \pict{Edgar_Germain_Hilaire_Degas_045.jpg}
 \end{myframe}
 
@@ -186,6 +213,7 @@
 \begin{myframe}
 \pictitle{L'Absinthe}{Glass of Absinthe}{Абсент}{Edgar Degas, 1876}{Musée d'Orsay, Paris}{http://commons.wikimedia.org/wiki/File:Edgar_Germain_Hilaire_Degas_012.jpg}
 
+\let\license\publicDomainWorld
 \pictR{Edgar_Germain_Hilaire_Degas_012.jpg}
 \end{myframe}
 
@@ -197,42 +225,34 @@
 \pictR{Cezanne_-_Selbstbildnis_mit_Mutze.jpg}
 \end{myframe}
 
-\begin{myframe}
+%% Special treatment of this painting
+\begin{center}
 \pictitle{Mont Sainte-Victoire}{Mountain Sainte-Victoire}{Гора Святой Виктории}{\\ Paul Cézanne, 1904--1906}{Sammlung C. S. Tyson, Philadelphia}{http://commons.wikimedia.org/wiki/File:Paul_Cézanne_109.jpg}
+\end{center}
+\vspace*{-.8cm}
+{\let\license\publicDomainWorld\centerline{\pict{Paul_Cezanne_109.jpg}}}
+\newpage
 
-\includegraphics[keepaspectratio,width=.89\textwidth,height=.9\textheight]{Paul_Cezanne_109.jpg}
-\end{myframe}
-
-\begin{myframe}
+%% Special treatment of this painting
+\begin{center}
 \pictitle{Mont Sainte--Victoire}{Mountain Sainte--Victoire --- view from Lauves}{Гора Святой Виктории}{\\ Paul Cézanne}{Unknown location}{http://commons.wikimedia.org/wiki/File:Cezanne_-_Mont_Sainte_Victoire_von_Lauves_aus_gesehen_2.jpg}
-
-\includegraphics[keepaspectratio,width=.89\textwidth,height=.9\textheight]{Cezanne_-_Mont_Sainte_Victoire_von_Lauves_aus_gesehen_2.jpg}
-\end{myframe}
+\end{center}
+\vspace*{-.8cm}
+\centerline{\pict{Cezanne_-_Mont_Sainte_Victoire_von_Lauves_aus_gesehen_2.jpg}}
+\newpage
 
 \newartist{Juan Gris (1887--1927)}
 \begin{myframe}
 \pictitle{Violon et guitare}{Violin and guitar}{Скрипка и гитара}{Juan Gris, 1913}{Queen Sofia Museum, Madrid}{http://commons.wikimedia.org/wiki/File:1913_Gris_violin_and_guitar_anagoria.JPG}
 
+\let\license\publicDomainEighty
 \pictR{1913_Gris_violin_and_guitar_anagoria.jpg}
 \end{myframe}
 
 \begin{myframe}
 \pictitle{Le Petit Déjeuner}{Breakfast}{Завтрак}{Juan Gris, 1914}{Museum of Modern Art,  NYC}{http://commons.wikimedia.org/wiki/File:1914_Gris_Le_Petit_Déjeuner.jpg}
 
+\let\license\publicDomainEighty
 \pictR{1914_Gris_Le_Petit_Dejeuner.jpg}
-\end{myframe}
-
-\newartist{Marcel Duchamp (1887--1968)}
-\begin{myframe}
-\pictitle{Nu descendant un escalier №\,2}{Nude Descending a Staircase, №\,2}{Обнаженная, спускающаяся по лестнице, №\,2}{\\ Marcel Duchamp, 1912}{Philadelphia Museum of Art}{http://en.wikipedia.org/wiki/File:Duchamp_-_Nude_Descending_a_Staircase.jpg}
-\vspace*{.7cm}
-
-\includegraphics[angle=90,keepaspectratio,width=.89\textwidth,height=.9\textheight]{Duchamp_-_Nude_Descending_a_Staircase.jpg}
-\end{myframe}
-
-\begin{myframe}
-\pictitle{Fountain}{Fountain}{Фонтан}{Marcel Duchamp, 1917}{Lost}{http://en.wikipedia.org/wiki/File:Marcel_Duchamp.jpg}
-
-\pict{Marcel_Duchamp.jpg}
 \end{myframe}
 
