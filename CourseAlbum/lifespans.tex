@@ -52,7 +52,8 @@
 \item[\colsign{lifespancolor}] Others
 \end{itemize}}}
 
-\noindent\hspace*{.25cm}\begin{tikzpicture}[x=1mm,y=1mm]
+\noindent\hspace*{.25cm}\copyrightbox[b]{%
+\begin{tikzpicture}[x=1mm,y=1mm]
 \pgfmathsetlengthmacro{\constLifeSpanHeight}{2mm}
 \pgfmathsetmacro{\constStartYear}{1700}%
 \pgfmathsetmacro{\constStopYear}{1840}%
@@ -131,10 +132,11 @@
 \end{scope}
 \node at (55,100) { \usebox{\thinkers} };
 \node[font=\Huge\scshape\bfseries,fill=blue!20,rounded corners] at (80, 140) {1632 -- 1984};
-\end{tikzpicture}
+\end{tikzpicture}}{\centerline{\myLicense}}
 \newpage
 
-\hspace*{.25cm}\begin{tikzpicture}[x=1mm,y=1mm]
+\hspace*{.25cm}\copyrightbox[b]{%
+\begin{tikzpicture}[x=1mm,y=1mm]
 \pgfmathsetlengthmacro{\constLifeSpanHeight}{2mm}
 \pgfmathsetmacro{\constStartYear}{1840}%
 \pgfmathsetmacro{\constStopYear}{1984}%
@@ -224,6 +226,6 @@
 \begin{scope}[yshift=\myshift]
 \putLifeSpan{1844}{1900}{Friedrich Wilhelm Nietzsche}{lifespancolorph}
 \end{scope}
-\end{tikzpicture}
+\end{tikzpicture}}{\centerline{\myLicense}}
 
 

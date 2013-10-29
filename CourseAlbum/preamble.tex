@@ -17,8 +17,18 @@
 \usepackage{varwidth}
 \usepackage{fancyhdr}
 \usepackage{copyrightbox}
+\usepackage{ccicons}
 \usepackage{tocloft}
 \usepackage{ifthen,changepage}
+
+%% My own copyright
+\def\myLicense{\ccbysa\ Vitaly Repin, 2013. Own work.}
+
+%%Put copyright box either left or right at the image. Depending on the page (odd/even)
+\newcommand{\copyrightboxOddEven}[1]{%
+\checkoddpage%
+\ifthenelse{\boolean{oddpage}}{\copyrightbox[l]{#1}{\centerline{\myLicense}}}{\copyrightbox[r]{#1}{\centerline{\myLicense}}}%
+}
 
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 
@@ -33,12 +43,12 @@
   \fancyhf{}
   \fancyhead[LO]{%
 \begin{tikzpicture}[overlay,remember picture]
-    \node at ([xshift=-5mm,yshift=-.48\textheight]current page.east) {\it\thepage};
+    \node at ([xshift=-8mm,yshift=-.48\textheight]current page.east) {\it\thepage};
     \end{tikzpicture}
 }
 \fancyhead[RE]{%
 \begin{tikzpicture}[overlay,remember picture]
-    \node at ([xshift=5mm,yshift=-.48\textheight]current page.west) {\it\thepage};
+    \node at ([xshift=8mm,yshift=-.48\textheight]current page.west) {\it\thepage};
     \end{tikzpicture}
 }
 }
