@@ -24,6 +24,8 @@
 \usepackage{auto-pst-pdf}
 \usepackage{pst-barcode}
 
+\usepackage{multicol}
+
 %% My own copyright
 \def\myLicense{\ccbysa\ Vitaly Repin, 2013. Own work.}
 
@@ -46,12 +48,12 @@
   \fancyhf{}
   \fancyhead[LO]{%
 \begin{tikzpicture}[overlay,remember picture]
-    \node at ([xshift=-8mm,yshift=-.48\textheight]current page.east) {\it\thepage};
+    \node at ([xshift=-8mm,yshift=1cm]current page.south east) {\it\thepage};
     \end{tikzpicture}
 }
 \fancyhead[RE]{%
 \begin{tikzpicture}[overlay,remember picture]
-    \node at ([xshift=8mm,yshift=-.48\textheight]current page.west) {\it\thepage};
+    \node at ([xshift=8mm,yshift=1cm]current page.south west) {\it\thepage};
     \end{tikzpicture}
 }
 }
