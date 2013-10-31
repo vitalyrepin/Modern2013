@@ -1,6 +1,16 @@
 %% Timelines: LifeSpans
 
-\addcontentsline{toc}{section}{TImeline of the course: philosophers, painters, poets and other thinkers}
+\addcontentsline{toc}{section}{Timeline of the course: philosophers, painters, poets and other thinkers}
+
+%% URL to put on the timeline.
+\newcommand{\descurl}[1]{%
+\begin{pspicture}(1in,1in)
+\psbarcode{#1}{eclevel=H}{qrcode}
+\end{pspicture}
+}
+
+\newsavebox{\lifespanqr}
+\savebox{\lifespanqr}{\descurl{http://vrepin.org/studies/ModernPostmodern/tml.html}}
 
 %% Puts new lifespan to the diagram
 %% Arguments:
@@ -132,6 +142,7 @@
 \end{scope}
 \node at (55,100) { \usebox{\thinkers} };
 \node[font=\Huge\scshape\bfseries,fill=blue!20,rounded corners] at (80, 140) {1632 -- 1984};
+\node[anchor=west] at (15, 60) {\usebox{\lifespanqr}};
 \end{tikzpicture}}{\centerline{\myLicense}}
 \newpage
 
