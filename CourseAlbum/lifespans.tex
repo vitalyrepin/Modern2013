@@ -12,22 +12,42 @@
 \newsavebox{\lifespanqr}
 \savebox{\lifespanqr}{\descurl{http://vrepin.org/studies/ModernPostmodern/tml.html}}
 
+%% To put hyperlinks into the nodes (whole area, not only texts)
+%% Taken from: http://tex.stackexchange.com/questions/36109/making-tikz-nodes-hyperlinkable
+\tikzset{
+   hyperlink node/.style={
+       alias=sourcenode,
+       append after command={
+           let     \p1 = (sourcenode.north west),
+               \p2=(sourcenode.south east),
+               \n1={\x2-\x1},
+               \n2={\y1-\y2} in
+           node [inner sep=0pt, outer sep=0pt,anchor=north west,at=(\p1)] {\href{#1}{\phantom{\rule{\n1}{\n2}}}}
+       }
+   }
+}
+
 %% Puts new lifespan to the diagram
 %% Arguments:
 %% Arg1: Start year
 %% Arg2: End year
 %% Arg3: Description
 %% Arg4: Color
+%% Arg5: URL
 %% Optional argument: node parameters (e.g., anchor)
-\newcommand{\putLifeSpan}[5][]{%
+\newcommand{\putLifeSpan}[6][]{%
 %% Starting position for the lifespan
 \pgfmathsetlengthmacro{\startPos}{(((#2>\constStartYear) ? #2 : \constStartYear) - \constStartYear)*\constMminYear}
 %% End position of the lifespan
 \pgfmathsetlengthmacro{\endPos}{(((#3<\constStopYear) ? #3 : \constStopYear) - \constStartYear)*\constMminYear}
 %% Center position of the lifespan - to put the label there
 \pgfmathsetlengthmacro{\centerPos}{(\endPos + \startPos)/2}
-\draw[rounded corners=1mm,fill=#5] (\startPos, 0) rectangle (\endPos, \constLifeSpanHeight);
-\node[#1] at (\centerPos, \constLifeSpanHeight + 2mm) {#4 (#2--#3)};
+%% Width of the lifespan
+\pgfmathsetlengthmacro{\spanWidth}{\endPos-\startPos}
+% Put the node instead of teh plain rectangle in order to be able to utilize hyperlink node style and make the whole life span clickable
+\node[rectangle,rounded corners,fill=#5,inner sep=0pt,minimum height=\constLifeSpanHeight, minimum width=\spanWidth, anchor=south west,hyperlink node={#6}] at (\startPos, 0) {};
+%\draw[rounded corners,fill=#5] at (\startPos, 0) rectangle (\endPos, \constLifeSpanHeight);
+\node[#1] at (\centerPos, \constLifeSpanHeight + 2mm) {\href{#6}{#4 (#2--#3)}};
 }
 
 %% Draws vertical tics for the timeline
@@ -76,51 +96,51 @@
 }
 %% Lifespans
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1711}{1776}{David Hume}{lifespancolorph}
-\putLifeSpan{1780}{1867}{Jean Ingres}{lifespancolorpa}
+\putLifeSpan{1711}{1776}{David Hume}{lifespancolorph}{http://en.wikipedia.org/wiki/David_Hume}
+\putLifeSpan{1780}{1867}{Jean Ingres}{lifespancolorpa}{http://en.wikipedia.org/wiki/Jean_Auguste_Dominique_Ingres}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1712}{1778}{Jean-Jacques Rousseau}{lifespancolorph}
-\putLifeSpan{1798}{1863}{Eugène Delacroix}{lifespancolorpa}
+\putLifeSpan{1712}{1778}{Jean-Jacques Rousseau}{lifespancolorph}{http://en.wikipedia.org/wiki/Rousseau}
+\putLifeSpan{1798}{1863}{Eugène Delacroix}{lifespancolorpa}{http://en.wikipedia.org/wiki/Eug\%C3\%A8ne_Delacroix}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1724}{1804}{Immanuel Kant}{lifespancolorph}
-\putLifeSpan{1806}{1873}{John Stuart Mill}{lifespancolorph}
+\putLifeSpan{1724}{1804}{Immanuel Kant}{lifespancolorph}{http://en.wikipedia.org/wiki/Immanuel_Kant}
+\putLifeSpan{1806}{1873}{John Stuart Mill}{lifespancolorph}{http://en.wikipedia.org/wiki/John_Stuart_Mill}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan[anchor=west]{1632}{1704}{John Locke}{lifespancolorph}
-\putLifeSpan{1748}{1832}{Jeremy Bentham}{lifespancolorph}
+\putLifeSpan[anchor=west]{1632}{1704}{John Locke}{lifespancolorph}{http://en.wikipedia.org/wiki/John_Locke}
+\putLifeSpan{1748}{1832}{Jeremy Bentham}{lifespancolorph}{http://en.wikipedia.org/wiki/Jeremy_Bentham}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1770}{1831}{Georg Wilhelm Friedrich Hegel}{lifespancolorph}
+\putLifeSpan{1770}{1831}{Georg Wilhelm Friedrich Hegel}{lifespancolorph}{http://en.wikipedia.org/wiki/Hegel}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1770}{1850}{William Wordsworth}{lifespancolorwr}
+\putLifeSpan{1770}{1850}{William Wordsworth}{lifespancolorwr}{http://en.wikipedia.org/wiki/Wordsworth}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1772}{1834}{Samuel Taylor Coleridge}{lifespancolorwr}
+\putLifeSpan{1772}{1834}{Samuel Taylor Coleridge}{lifespancolorwr}{http://en.wikipedia.org/wiki/Samuel_Taylor_Coleridge}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1802}{1892}{Constantin Guys}{lifespancolor}
+\putLifeSpan{1802}{1892}{Constantin Guys}{lifespancolor}{https://en.wikipedia.org/wiki/Constantin_Guys}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1809}{1882}{Charles Darwin}{lifespancolor}
+\putLifeSpan{1809}{1882}{Charles Darwin}{lifespancolor}{http://en.wikipedia.org/wiki/Charles_Darwin}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1803}{1882}{Ralph Emerson}{lifespancolorph}
+\putLifeSpan{1803}{1882}{Ralph Emerson}{lifespancolorph}{https://en.wikipedia.org/wiki/Ralph_Waldo_Emerson}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan[font=\small]{1815}{1898}{Otto von Bismarck}{lifespancolor}
+\putLifeSpan[font=\small]{1815}{1898}{Otto von Bismarck}{lifespancolor}{http://en.wikipedia.org/wiki/Otto_von_Bismarck}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
@@ -160,82 +180,82 @@
 }
 %% Lifespans
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1780}{1867}{Jean Ingres}{lifespancolorpa}
-\putLifeSpan{1872}{1970}{Bertrand Russell}{lifespancolorph}
+\putLifeSpan{1780}{1867}{Jean Ingres}{lifespancolorpa}{http://en.wikipedia.org/wiki/Jean_Auguste_Dominique_Ingres}
+\putLifeSpan{1872}{1970}{Bertrand Russell}{lifespancolorph}{http://en.wikipedia.org/wiki/Bertrand_Russell}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1864}{1901}{Toulouse-Lautrec}{lifespancolorpa}
+\putLifeSpan{1864}{1901}{Toulouse-Lautrec}{lifespancolorpa}{http://en.wikipedia.org/wiki/Henri_de_Toulouse-Lautrec}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1806}{1873}{John Stuart Mill}{lifespancolorph}
-\putLifeSpan{1881}{1973}{Pablo Picasso}{lifespancolorpa}
+\putLifeSpan{1806}{1873}{John Stuart Mill}{lifespancolorph}{http://en.wikipedia.org/wiki/John_Stuart_Mill}
+\putLifeSpan{1881}{1973}{Pablo Picasso}{lifespancolorpa}{http://en.wikipedia.org/wiki/Picasso}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1834}{1917}{Edgar Degas}{lifespancolorpa}
+\putLifeSpan{1834}{1917}{Edgar Degas}{lifespancolorpa}{http://en.wikipedia.org/wiki/Degas}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1832}{1883}{Édouard Manet}{lifespancolorpa}
-\putLifeSpan{1887}{1927}{Juan Gris}{lifespancolorpa}
+\putLifeSpan{1832}{1883}{Édouard Manet}{lifespancolorpa}{https://en.wikipedia.org/wiki/\%C3\%89douard_Manet}
+\putLifeSpan{1887}{1927}{Juan Gris}{lifespancolorpa}{http://en.wikipedia.org/wiki/Juan_Gris}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1856}{1939}{Sigmund Freud}{lifespancolor}
+\putLifeSpan{1856}{1939}{Sigmund Freud}{lifespancolor}{https://en.wikipedia.org/wiki/Sigmund_Freud}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1839}{1906}{Paul Cézanne}{lifespancolorpa}
-\putLifeSpan{1912}{1956}{Jackson Pollock}{lifespancolorpa}
+\putLifeSpan{1839}{1906}{Paul Cézanne}{lifespancolorpa}{http://en.wikipedia.org/wiki/Cezanne}
+\putLifeSpan{1912}{1956}{Jackson Pollock}{lifespancolorpa}{http://en.wikipedia.org/wiki/Jackson_Pollock}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1802}{1892}{Constantin Guys}{lifespancolor}
-\putLifeSpan{1895}{1973}{Max Horkheimer}{lifespancolorph}
+\putLifeSpan{1802}{1892}{Constantin Guys}{lifespancolor}{https://en.wikipedia.org/wiki/Constantin_Guys}
+\putLifeSpan{1895}{1973}{Max Horkheimer}{lifespancolorph}{http://en.wikipedia.org/wiki/Max_Horkheimer}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1809}{1882}{Charles Darwin}{lifespancolor}
-\putLifeSpan{1887}{1968}{Marcel Duchamp}{lifespancolorpa}
+\putLifeSpan{1809}{1882}{Charles Darwin}{lifespancolor}{http://en.wikipedia.org/wiki/Charles_Darwin}
+\putLifeSpan{1887}{1968}{Marcel Duchamp}{lifespancolorpa}{http://en.wikipedia.org/wiki/Marcel_Duchamp}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1803}{1882}{Ralph Emerson}{lifespancolorph}
-\putLifeSpan{1889}{1951}{Ludwig Wittgenstein}{lifespancolorph}
+\putLifeSpan{1803}{1882}{Ralph Emerson}{lifespancolorph}{https://en.wikipedia.org/wiki/Ralph_Waldo_Emerson}
+\putLifeSpan{1889}{1951}{Ludwig Wittgenstein}{lifespancolorph}{http://en.wikipedia.org/wiki/Ludwig_Wittgenstein}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1815}{1898}{Otto von Bismarck}{lifespancolor}
-\putLifeSpan{1903}{1969}{Theodor W. Adorno}{lifespancolorph}
+\putLifeSpan{1815}{1898}{Otto von Bismarck}{lifespancolor}{http://en.wikipedia.org/wiki/Otto_von_Bismarck}
+\putLifeSpan{1903}{1969}{Theodor W. Adorno}{lifespancolorph}{http://en.wikipedia.org/wiki/Adorno}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1818}{1883}{Karl Heinrich Marx}{lifespancolorph}
-\putLifeSpan{1926}{1984}{Michel Foucault}{lifespancolorph}
+\putLifeSpan{1818}{1883}{Karl Heinrich Marx}{lifespancolorph}{http://en.wikipedia.org/wiki/Marx}
+\putLifeSpan{1926}{1984}{Michel Foucault}{lifespancolorph}{http://en.wikipedia.org/wiki/Michel_Foucault}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1821}{1880}{Gustave Flaubert}{lifespancolorwr}
-\putLifeSpan{1882}{1941}{Virginia Woolf}{lifespancolorwr}
+\putLifeSpan{1821}{1880}{Gustave Flaubert}{lifespancolorwr}{http://en.wikipedia.org/wiki/Flaubert}
+\putLifeSpan{1882}{1941}{Virginia Woolf}{lifespancolorwr}{http://en.wikipedia.org/wiki/Virginia_Woolf}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1819}{1877}{Gustave Courbet}{lifespancolorpa}
+\putLifeSpan{1819}{1877}{Gustave Courbet}{lifespancolorpa}{http://en.wikipedia.org/wiki/Gustave_Courbet}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1821}{1867}{Baudelaire}{lifespancolorwr}
-\putLifeSpan{1873}{1958}{George Edward Moore}{lifespancolorph}
+\putLifeSpan{1821}{1867}{Baudelaire}{lifespancolorwr}{http://en.wikipedia.org/wiki/Charles_Baudelaire}
+\putLifeSpan{1873}{1958}{George Edward Moore}{lifespancolorph}{http://en.wikipedia.org/wiki/George_Edward_Moore}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1830}{1903}{Camille Pissarro}{lifespancolorpa}
+\putLifeSpan{1830}{1903}{Camille Pissarro}{lifespancolorpa}{http://en.wikipedia.org/wiki/Camille_Pissarro}
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
-\putLifeSpan{1844}{1900}{Friedrich Wilhelm Nietzsche}{lifespancolorph}
+\putLifeSpan{1844}{1900}{Friedrich Wilhelm Nietzsche}{lifespancolorph}{http://en.wikipedia.org/wiki/Friedrich_Nietzsche}
 \end{scope}
 \end{tikzpicture}}{\centerline{\myLicense}}
 
