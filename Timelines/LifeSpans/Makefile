@@ -1,5 +1,5 @@
 # Main input (w/o extension)
-MAIN_FNAME=timeline
+MAIN_FNAME=lifespans
 # Additional files the main input file depends on
 ADDDEPS=
 
