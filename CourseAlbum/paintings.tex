@@ -21,7 +21,7 @@
 \def\publicDomainEighty{This work is in the public domain in those countries with a copyright term of life of the author plus 80 years or less.}
 
 \let\license\publicDomain
-\newcommand{\pictRaw}[3][]{\copyrightbox[#2]{\includegraphics[#1 keepaspectratio,width=.89\textwidth,height=.9\textheight]{#3}}{\centerline{\tiny\sffamily\license}}}
+\newcommand{\pictRaw}[3][]{\copyrightbox[#2]{\includegraphics[#1 keepaspectratio,width=.89\textwidth,height=.9\textheight]{imgs/#3}}{\centerline{\tiny\sffamily\license}}}
 %% Copyright box: for odd pages appears at right side. For even pages at left
 \newcommand{\pict}[1]{\checkoddpage%
 \ifthenelse{\boolean{oddpage}}{\pictRaw{l}{#1}}{\pictRaw{r}{#1}}%
