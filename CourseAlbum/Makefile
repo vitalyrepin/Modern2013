@@ -3,7 +3,7 @@ DVIPS = dvips
 # Main input (w/o extension)
 MAIN_FNAME=album
 # Additional files the main input file depends on
-ADDDEPS=paintings.tex arch.tex lockefreud.tex LighthouseMap.tex preamble.tex lifespans.tex mindmaps.tex PhilGuidelines.tex essays.tex freudbaudelaire.tex kant.tex
+ADDDEPS=paintings.tex arch.tex lockefreud.tex LighthouseMap.tex preamble.tex lifespans.tex mindmaps.tex PhilGuidelines.tex essays.tex freudbaudelaire.tex kant.tex ack.tex
 
 IMAGES = 1913_Gris_violin_and_guitar_anagoria.jpg 1914_Gris_Le_Petit_Dejeuner.jpg Camille_Pissarro_045.jpg Camille_Pissarro,_Gelee_blanche_(Hoarfrost),_1873.jpg \
 	Cezanne_-_Mont_Sainte_Victoire_von_Lauves_aus_gesehen_2.jpg Cezanne_-_Selbstbildnis_mit_Mutze.jpg Constantin-Ernest-Adolphe-Hyacinthe_Guys_001.jpg\
