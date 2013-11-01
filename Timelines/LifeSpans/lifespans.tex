@@ -51,17 +51,6 @@ pdfcontactemail={vitaly.repin@gmail.com},
 %% Arg4: Color
 %% Arg5: URL
 %% Optional argument: node parameters (e.g., anchor)
-\newcommand{\putLifeSpanH}[5][]{%
-%% Starting position for the lifespan
-\pgfmathsetlengthmacro{\startPos}{(((#2>\constStartYear) ? #2 : \constStartYear) - \constStartYear)*\constMminYear}
-%% End position of the lifespan
-\pgfmathsetlengthmacro{\endPos}{(#3 - \constStartYear)*\constMminYear}
-%% Center position of the lifespan - to put the label there
-\pgfmathsetlengthmacro{\centerPos}{(\endPos + \startPos)/2}
-\draw[rounded corners,fill=#5] (\startPos, 0) rectangle (\endPos, \constLifeSpanHeight);
-\node at (\centerPos, \constLifeSpanHeight + 2mm) {#4 (#2--#3)};
-}
-
 \newcommand{\putLifeSpan}[6][]{%
 %% Starting position for the lifespan
 \pgfmathsetlengthmacro{\startPos}{(((#2>\constStartYear) ? #2 : \constStartYear) - \constStartYear)*\constMminYear}
