@@ -55,7 +55,7 @@ pdfcontactemail={vitaly.repin@gmail.com},
 %% Starting position for the lifespan
 \pgfmathsetlengthmacro{\startPos}{(((#2>\constStartYear) ? #2 : \constStartYear) - \constStartYear)*\constMminYear}
 %% End position of the lifespan
-\pgfmathsetlengthmacro{\endPos}{(#3 - \constStartYear)*\constMminYear}
+\pgfmathsetlengthmacro{\endPos}{(((#3<\constStopYear) ? #3 : \constStopYear) - \constStartYear)*\constMminYear}
 %% Center position of the lifespan - to put the label there
 \pgfmathsetlengthmacro{\centerPos}{(\endPos + \startPos)/2}
 %% Width of the lifespan
@@ -63,7 +63,7 @@ pdfcontactemail={vitaly.repin@gmail.com},
 % Put the node instead of teh plain rectangle in order to be able to utilize hyperlink node style and make the whole life span clickable
 \node[rectangle,rounded corners,fill=#5,inner sep=0pt,minimum height=\constLifeSpanHeight, minimum width=\spanWidth, anchor=south west,hyperlink node={#6}] at (\startPos, 0) {};
 %\draw[rounded corners,fill=#5] at (\startPos, 0) rectangle (\endPos, \constLifeSpanHeight);
-\node at (\centerPos, \constLifeSpanHeight + 2mm) {\href{#6}{#4 (#2--#3)}};
+\node[#1] at (\centerPos, \constLifeSpanHeight + 2mm) {\href{#6}{#4 (#2--#3)}};
 }
 
 %% Draws vertical tics for the timeline
