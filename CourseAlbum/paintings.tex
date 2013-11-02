@@ -7,7 +7,6 @@
 \newcommand{\newartist}[2]{\stepcounter{artist}\pdfbookmark[3]{#1}{\arabic{artist}}\addcontentsline{toc}{subsection}{#1 #2}\index{#1}}
 
 \pagestyle{sideheadingnowiki}
-
 \newcounter{pict}\setcounter{pict}{0}
 \newcommand{\pictitle}[6]{\stepcounter{pict}\pdfbookmark[4]{#1 (#2)}{\arabic{artist}-\arabic{pict}}\addcontentsline{toc}{subsubsection}{#1 (#2)}%
 \myhref{#6}{\textsf{\textbf{#1 (#2, #3).}}} \textit{#4.} #5.\index{#2@#2 (#1), \textsl{painting}}\bigskip}

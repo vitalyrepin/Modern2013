@@ -78,4 +78,7 @@ clean:
 		latexmk -c
 		$(RM) *.bbl
 		$(RM) $(EPS_IMAGES_RM)
+		$(RM) *-pics.pdf
+		$(RM) *.fls
+		$(RM) htaccess.config
 

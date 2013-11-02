@@ -25,9 +25,12 @@
 \usepackage{auto-pst-pdf}
 \usepackage{pst-barcode}
 
+\usepackage{longtable,tabu}
+
 \usepackage{makeidx}
 \usepackage{multicol}
 \usepackage[shortlabels]{enumitem}
+
 \usepackage{imakeidx}
 
 %% Sets geometry for the pages with texts
@@ -104,4 +107,12 @@ pdfcontactcountry={Finland},
 pdfcontactemail={vitaly.repin@gmail.com},
 pdflang={en}
 }
+
+%% QR with URL
+\newcommand{\descurl}[1]{%
+\begin{pspicture}(1in,1in)
+\psbarcode{#1}{eclevel=H}{qrcode}
+\end{pspicture}
+}
+
 
