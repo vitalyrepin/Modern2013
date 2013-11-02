@@ -4,13 +4,13 @@
 \addcontentsline{toc}{section}{Paintings of the Modern}
 
 \newcounter{artist}\setcounter{artist}{0}
-\newcommand{\newartist}[1]{\stepcounter{artist}\pdfbookmark[3]{#1}{\arabic{artist}}\addcontentsline{toc}{subsection}{#1}}
+\newcommand{\newartist}[2]{\stepcounter{artist}\pdfbookmark[3]{#1}{\arabic{artist}}\addcontentsline{toc}{subsection}{#1 #2}\index{#1}}
 
 \pagestyle{sideheadingnowiki}
 
 \newcounter{pict}\setcounter{pict}{0}
 \newcommand{\pictitle}[6]{\stepcounter{pict}\pdfbookmark[4]{#1 (#2)}{\arabic{artist}-\arabic{pict}}\addcontentsline{toc}{subsubsection}{#1 (#2)}%
-\myhref{#6}{\textsf{\textbf{#1 (#2, #3).}}} \textit{#4.} #5.\bigskip}
+\myhref{#6}{\textsf{\textbf{#1 (#2, #3).}}} \textit{#4.} #5.\index{#2@#2 (#1), \textsl{painting}}\bigskip}
 
 \newenvironment{myframe}{\begin{center}}{\end{center}\newpage}
 
@@ -31,7 +31,7 @@
 \ifthenelse{\boolean{oddpage}}{\pictRaw[angle=90,]{l}{#1}}{\pictRaw[angle=90,]{r}{#1}}%
 }
 
-\newartist{Eugène Delacroix (1798--1863)}
+\newartist{Eugène Delacroix}{(1798--1863)}
 
 \begin{myframe}
 \pictitle{La Mort de Sardanapale}{Death of Sardanapalus}{Смерть Сарданапала}{Eugène Delacroix, 1827}{Louvre, Paris}{http://commons.wikimedia.org/wiki/File:Delacroix_-_La_Mort_de_Sardanapale_(1827).jpg}
@@ -54,7 +54,7 @@
 \centerline{\pict{Eugene_Delacroix_-_Le_28_Juillet_La_Liberte_guidant_le_peuple}}
 \newpage
 
-\newartist{Gustave Courbet (1819--1877)}
+\newartist{Gustave Courbet}{(1819--1877)}
 \begin{myframe}
 \pictitle{Le Désespéré}{The Desperate Man (self-portrait)}{Отчаявшийся (автопортрет)}{Gustave Courbet, 1841}{Private collection}{http://commons.wikimedia.org/wiki/File:Gustave_Courbet_-_Le_Désespéré_(1843).jpg}
 
@@ -89,7 +89,7 @@
 \pictRaw{b}{Gustave_Courbet_-_A_Burial_at_Ornans_-_Google_Art_Project_2}
 \end{myframe}
 
-\newartist{Édouard Manet (1832--1883)}
+\newartist{Édouard Manet}{(1832--1883)}
 \begin{myframe}
 \pictitle{Segelboote in Argenteuil}{Boating in Argenteuil}{Яхты в Аржантёйе}{Édouard Manet, 1874}{National Museum Cardiff, Wales}{http://commons.wikimedia.org/wiki/File:Édouard_Manet_-_Segelboote_in_Argenteuil.jpg}
 
@@ -126,14 +126,14 @@
 \pict{Edouard_Manet,_A_Bar_at_the_Folies-Bergere}
 \end{myframe}
 
-\newartist{Constantin Guys (1802-1892)}
+\newartist{Constantin Guys}{(1802-1892)}
 \begin{myframe}
 \pictitle{La Loge de l'opéra}{Loge}{Ложа}{Constantin Guys}{Albertina, Vienna}{http://commons.wikimedia.org/wiki/File:Constantin-Ernest-Adolphe-Hyacinthe_Guys_001.jpg?uselang=en}
 
 \pict{Constantin-Ernest-Adolphe-Hyacinthe_Guys_001}
 \end{myframe}
 
-\newartist{Camille Pissarro (1830--1903) }
+\newartist{Camille Pissarro}{(1830--1903)}
 %% Special treatment of this painting
 \begin{center}
 \pictitle{Port-Marly, le lavoir dit à tort le lavoir, Pontoise}{Port-Marly, the wash, Pontoise}{Прачечная, Порт Марли}{\\ Camille Pissarro, 1872}{Musée d'Orsay, Paris}{http://commons.wikimedia.org/wiki/File:Camille_Pissarro_045.jpg}
@@ -148,7 +148,7 @@
 \pict{Camille_Pissarro,_Gelee_blanche_(Hoarfrost),_1873}
 \end{myframe}
 
-\newartist{Henri de Toulouse-Lautrec (1864--1901)}
+\newartist{Henri de Toulouse-Lautrec}{(1864--1901)}
 \begin{myframe}
 \pictitle{Divan Japonais}{Poster}{Плакат}{Henri de Toulouse-Lautrec, 1892--1893}{Private collection}{http://en.wikipedia.org/wiki/File:Henri_de_Toulouse-Lautrec_019.jpg}
 
@@ -169,7 +169,7 @@
 \pict{Henri_de_Toulouse-Lautrec_009}
 \end{myframe}
 
-\newartist{Edgar Degas (1834--1917)}
+\newartist{Edgar Degas}{(1834--1917)}
 \begin{myframe}
 \pictitle{Repasseuses}{Two ironing women}{Гладильщицы}{Edgar Degas, 1884}{Musée d'Orsay, Paris}{http://commons.wikimedia.org/wiki/File:Edgar_Germain_Hilaire_Degas_084.jpg}
 
@@ -217,7 +217,7 @@
 \pictR{Edgar_Germain_Hilaire_Degas_012}
 \end{myframe}
 
-\newartist{Paul Cézanne (1839--1906)}
+\newartist{Paul Cézanne}{(1839--1906)}
 
 \begin{myframe}
 \pictitle{Autoportrait}{Self-portrait}{Автопортрет}{Paul Cézanne}{Unknown location}{http://commons.wikimedia.org/wiki/File:Cezanne_-_Selbstbildnis_mit_Mütze.jpg}
@@ -241,7 +241,7 @@
 \centerline{\pict{Cezanne_-_Mont_Sainte_Victoire_von_Lauves_aus_gesehen_2}}
 \newpage
 
-\newartist{Juan Gris (1887--1927)}
+\newartist{Juan Gris}{(1887--1927)}
 \begin{myframe}
 \pictitle{Violon et guitare}{Violin and guitar}{Скрипка и гитара}{Juan Gris, 1913}{Queen Sofia Museum, Madrid}{http://commons.wikimedia.org/wiki/File:1913_Gris_violin_and_guitar_anagoria.JPG}
 

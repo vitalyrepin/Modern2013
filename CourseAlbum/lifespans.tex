@@ -44,7 +44,9 @@
 \pgfmathsetlengthmacro{\centerPos}{(\endPos + \startPos)/2}
 %% Width of the lifespan
 \pgfmathsetlengthmacro{\spanWidth}{\endPos-\startPos}
-% Put the node instead of teh plain rectangle in order to be able to utilize hyperlink node style and make the whole life span clickable
+%% Add an entry to the alphabetical index
+\index{#4}
+% Put the node instead of the plain rectangle in order to be able to utilize hyperlink node style and make the whole life span clickable
 \node[rectangle,rounded corners,fill=#5,inner sep=0pt,minimum height=\constLifeSpanHeight, minimum width=\spanWidth, anchor=south west,hyperlink node={#6}] at (\startPos, 0) {};
 %\draw[rounded corners,fill=#5] at (\startPos, 0) rectangle (\endPos, \constLifeSpanHeight);
 \node[#1] at (\centerPos, \constLifeSpanHeight + 2mm) {\href{#6}{#4 (#2--#3)}};
