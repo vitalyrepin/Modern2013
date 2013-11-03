@@ -14,7 +14,6 @@
 \newcommand{\websiteDomain}{http://vrepin.org}
 \newcommand{\websitePath}{/studies/ModernPostmodern/album/}
 \newcounter{shorturl}\setcounter{shorturl}{0}
-\newcommand{\myurl}[1]{\selectlanguage{french}{\url{#1}\selectlanguage{russian}}}
 
 \newsavebox{\attrElem}
 %% Prints attribution text
@@ -32,8 +31,8 @@
 \hspace*{.4cm}\textbf{\small\textsc{Image at page~\pageref{img:#1}}}
 \vspace*{-.1cm}
 \begin{itemize}
-\item \myurl{#2}.
-\item \myurl{#3}.
+\item \url{#2}.
+\item \url{#3}.
 \item #4.
 \end{itemize}}}
 \noindent\begin{tabular}{l@{\hspace*{-.3cm}}p{7cm}}

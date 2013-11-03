@@ -1,4 +1,5 @@
 %% Preamble
+\pdfminorversion=3 %% This is required by lulu.com: http://connect.lulu.com/t5/Interior-Formatting/PDF-Creation-Settings-How-can-I-be-sure-my-PDF-will-print/ta-p/33681
 \usepackage[T1,T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[french,english,russian]{babel}
@@ -32,6 +33,9 @@
 \usepackage[shortlabels]{enumitem}
 
 \usepackage{imakeidx}
+
+\pdfobjcompresslevel=3
+\pdfcompresslevel=9
 
 %% Sets geometry for the pages with texts
 \newcommand{\settxtgeometry}{\newgeometry{left=1.7cm,bottom=2cm,right=1.7cm}}
