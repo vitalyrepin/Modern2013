@@ -45,29 +45,6 @@ pdfcontactemail={vitaly.repin@gmail.com},
    }
 }
 
-%% Puts new lifespan to the diagram
-%% Arguments:
-%% Arg1: Start year
-%% Arg2: End year
-%% Arg3: Description
-%% Arg4: Color
-%% Arg5: URL
-%% Optional argument: node parameters (e.g., anchor)
-\newcommand{\putLifeSpan}[6][]{%
-%% Starting position for the lifespan
-\pgfmathsetlengthmacro{\startPos}{(((#2>\constStartYear) ? #2 : \constStartYear) - \constStartYear)*\constMminYear}
-%% End position of the lifespan
-\pgfmathsetlengthmacro{\endPos}{(((#3<\constStopYear) ? #3 : \constStopYear) - \constStartYear)*\constMminYear}
-%% Center position of the lifespan - to put the label there
-\pgfmathsetlengthmacro{\centerPos}{(\endPos + \startPos)/2}
-%% Width of the lifespan
-\pgfmathsetlengthmacro{\spanWidth}{\endPos-\startPos}
-% Put the node instead of teh plain rectangle in order to be able to utilize hyperlink node style and make the whole life span clickable
-\node[rectangle,rounded corners,fill=#5,inner sep=0pt,minimum height=\constLifeSpanHeight, minimum width=\spanWidth, anchor=south west,hyperlink node={#6}] at (\startPos, 0) {};
-%\draw[rounded corners,fill=#5] at (\startPos, 0) rectangle (\endPos, \constLifeSpanHeight);
-\node[#1] at (\centerPos, \constLifeSpanHeight + 2mm) {\href{#6}{#4 (#2--#3)}};
-}
-
 %% Puts event to the timeline
 %% Arguments:
 %% Arg1: Start Year
@@ -105,7 +82,6 @@ pdfcontactemail={vitaly.repin@gmail.com},
 \pgfmathsetlengthmacro{\xshift}{0cm}
 }
 
-
 %% Draws vertical tics for the timeline
 %% Arg1: Year
 \newcommand{\drawVertTics}[1]{%
@@ -130,7 +106,6 @@ pdfcontactemail={vitaly.repin@gmail.com},
 \item[\colsign{papercolor}] Papers
 \item[\colsign{lifespancolorpa}] Paintings
 \end{itemize}}}
-
 
 %% Updates shift
 \newcommand{\updateshift}[1][3.3cm]{\pgfmathsetlengthmacro{\myshift}{\myshift + #1}}
