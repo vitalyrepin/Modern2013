@@ -3,7 +3,8 @@ DVIPS = dvips
 # Main input (w/o extension)
 MAIN_FNAME=album
 # Additional files the main input file depends on
-ADDDEPS=paintings.tex arch.tex lockefreud.tex LighthouseMap.tex preamble.tex lifespans.tex mindmaps.tex PhilGuidelines.tex essays.tex freudbaudelaire.tex kant.tex ack.tex index.tex events.tex
+ADDDEPS=paintings.tex arch.tex lockefreud.tex LighthouseMap.tex preamble.tex lifespans.tex mindmaps.tex PhilGuidelines.tex essays.tex freudbaudelaire.tex kant.tex \
+	ack.tex index.tex events.tex darwinbaudelaire.tex timelines.tex preface.tex
 
 IMAGES = 1913_Gris_violin_and_guitar_anagoria.jpg 1914_Gris_Le_Petit_Dejeuner.jpg Camille_Pissarro_045.jpg Camille_Pissarro,_Gelee_blanche_(Hoarfrost),_1873.jpg \
 	Cezanne_-_Mont_Sainte_Victoire_von_Lauves_aus_gesehen_2.jpg Cezanne_-_Selbstbildnis_mit_Mutze.jpg Constantin-Ernest-Adolphe-Hyacinthe_Guys_001.jpg\
@@ -16,7 +17,7 @@ IMAGES = 1913_Gris_violin_and_guitar_anagoria.jpg 1914_Gris_Le_Petit_Dejeuner.jp
 	Henri_de_Toulouse-Lautrec_019.jpg MANET_-_Musica_en_las_Tullerias_(National_Gallery,_Londres,_1862).jpg Paul_Cezanne_109.jpg Howe_House.jpg Mies-van-der-Rohe-Haus_Berlin,_4.jpg\
 	1300coopDetroit.jpg The_Mies_van_der_Rohe's_Pavilion.jpg Mies_van_der_rohe_3-6-2006.jpg Gehry_House_-_Image02.jpg Le_musee_Guggenheim_(Bilbao)_(3432848128).jpg\
 	Architecture_buildings_Disney_concert_halls.jpg DiamondRanchHS_-_CarolHighsmith_-_4.jpg Eugene_Federal_Courthouse_(Lane_County,_Oregon_scenic_images)_(lanDA0003).jpg\
-	Seattle_Central_Library,_Seattle,_Washington_-_20060418.jpg
+	Seattle_Central_Library,_Seattle,_Washington_-_20060418.jpg darwin.jpg
 
 IMAGES_WPATH=$(addprefix imgs/,$(IMAGES))
 EPS_IMAGES=$(addprefix imgs/, $(addsuffix .eps, $(basename $(notdir $(IMAGES_WPATH)))))

@@ -1,5 +1,5 @@
 %% Historical events. Plus paintings, papers
-\addcontentsline{toc}{section}{Timeline of the course: events, papers, paintings}
+\addcontentsline{toc}{subsection}{Events: history, papers, paintings}
 
 %% Puts event to the timeline
 %% Arguments:
@@ -34,6 +34,7 @@
 \pgfmathsetlengthmacro{\mytxtwidth}{#7}
 \fi
 \pgfmathsetlengthmacro{\xpos}{\xshift+\centerPos}
+\index{#4}
 \node[rectangle callout, rounded corners, text width=\mytxtwidth, callout absolute pointer={(\centerPos,#1*\constLifeSpanHeight / 2 )},anchor=center, draw=#5] at (\xpos, \yPos) {\textcolor{black}{\href{#6}{\pictTitle}}};
 \pgfmathsetlengthmacro{\xshift}{0cm}
 }
