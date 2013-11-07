@@ -1,0 +1,222 @@
+\documentclass{article}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french,english]{babel}
+\usepackage[pdftex]{graphicx}
+\usepackage{cmap}
+\usepackage{hyperxmp}
+\usepackage[landscape,left=0.1cm, right=.1cm, top=0.1cm, bottom=.1cm,paperwidth=8in,paperheight=18in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{ccicons}
+\usepackage{tikz}
+\usepackage{calc}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes.callouts}
+
+\begin{document}
+
+%% PDF meta-data
+\hypersetup{%
+pdftitle={Timeline: Modern and Postmodern key events.},
+pdfauthor={Vitaly Repin},
+pdfcopyright={This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License},
+pdfsubject={The Modern and the Postmodern},
+pdfkeywords={modern,postmodern,tikz,history,timeline},
+pdflicenseurl={http://creativecommons.org/licenses/by-sa/3.0/},
+pdfcaptionwriter={Vitaly Repin},
+pdfcontactcity={Espoo},
+pdfcontactcountry={Finland},
+pdfcontactemail={vitaly.repin@gmail.com},
+}
+
+%% To put hyperlinks into the nodes (whole area, not only texts)
+%% Taken from: http://tex.stackexchange.com/questions/36109/making-tikz-nodes-hyperlinkable
+\tikzset{
+   hyperlink node/.style={
+       alias=sourcenode,
+       append after command={
+           let     \p1 = (sourcenode.north west),
+               \p2=(sourcenode.south east),
+               \n1={\x2-\x1},
+               \n2={\y1-\y2} in
+           node [inner sep=0pt, outer sep=0pt,anchor=north west,at=(\p1)] {\href{#1}{\phantom{\rule{\n1}{\n2}}}}
+       }
+   }
+}
+
+%% Puts new lifespan to the diagram
+%% Arguments:
+%% Arg1: Start year
+%% Arg2: End year
+%% Arg3: Description
+%% Arg4: Color
+%% Arg5: URL
+%% Optional argument: node parameters (e.g., anchor)
+\newcommand{\putLifeSpan}[6][]{%
+%% Starting position for the lifespan
+\pgfmathsetlengthmacro{\startPos}{(((#2>\constStartYear) ? #2 : \constStartYear) - \constStartYear)*\constMminYear}
+%% End position of the lifespan
+\pgfmathsetlengthmacro{\endPos}{(((#3<\constStopYear) ? #3 : \constStopYear) - \constStartYear)*\constMminYear}
+%% Center position of the lifespan - to put the label there
+\pgfmathsetlengthmacro{\centerPos}{(\endPos + \startPos)/2}
+%% Width of the lifespan
+\pgfmathsetlengthmacro{\spanWidth}{\endPos-\startPos}
+% Put the node instead of teh plain rectangle in order to be able to utilize hyperlink node style and make the whole life span clickable
+\node[rectangle,rounded corners,fill=#5,inner sep=0pt,minimum height=\constLifeSpanHeight, minimum width=\spanWidth, anchor=south west,hyperlink node={#6}] at (\startPos, 0) {};
+%\draw[rounded corners,fill=#5] at (\startPos, 0) rectangle (\endPos, \constLifeSpanHeight);
+\node[#1] at (\centerPos, \constLifeSpanHeight + 2mm) {\href{#6}{#4 (#2--#3)}};
+}
+
+%% Puts event to the timeline
+%% Arguments:
+%% Arg1: Start Year
+%% Arg2: End Year
+%% Arg3: Description
+%% Arg4: Color
+%% Arg5: URL
+%% Arg6: Text widdth
+%% Optional argument: UP (1) or DOWN (-1)
+\newcommand{\putEvent}[7][1]{
+%% Starting position
+\pgfmathsetlengthmacro{\startPos}{(((#2>\constStartYear) ? #2 : \constStartYear) - \constStartYear)*\constMminYear}
+%% End position
+\pgfmathsetlengthmacro{\endPos}{(((#3<\constStopYear) ? #3 : \constStopYear) - \constStartYear)*\constMminYear}
+%% Center position
+\pgfmathsetlengthmacro{\centerPos}{(\endPos + \startPos)/2}
+\pgfmathsetlengthmacro{\yPos}{#1*(\constLifeSpanHeight+0.8cm)}
+%% Drawing circle if event is 1-year event. Otherwise, draw a bar
+\ifnum\pdfstrcmp{#2}{#3}=0
+\node[fill=#5,circle,inner sep=0pt, anchor=center,minimum width=\constMminYear / 2, minimum height=\constLifeSpanHeight / 2] at (\centerPos, 0) {};
+\def\pictTitle{#2: #4}
+\else
+%% Width of the event
+\pgfmathsetlengthmacro{\spanWidth}{\endPos-\startPos}
+\node[rectangle,rounded corners,fill=#5,inner sep=0pt,minimum height=\constLifeSpanHeight/2, minimum width=\spanWidth, anchor=south west,hyperlink node={#6}] at (\startPos, 0) {};
+\def\pictTitle{#2 -- #3: #4}
+\fi
+\ifnum\pdfstrcmp{#7}{-1}=0
+\pgfmathsetlengthmacro{\mytxtwidth}{2mm + \widthof{\pictTitle}}
+\else
+\pgfmathsetlengthmacro{\mytxtwidth}{#7}
+\fi
+\pgfmathsetlengthmacro{\xpos}{\xshift+\centerPos}
+\node[rectangle callout, rounded corners, text width=\mytxtwidth, callout absolute pointer={(\centerPos,#1*\constLifeSpanHeight / 2 )},anchor=center, draw=#5] at (\xpos, \yPos) {\textcolor{black}{\href{#6}{\pictTitle}}};
+\pgfmathsetlengthmacro{\xshift}{0cm}
+}
+
+
+%% Draws vertical tics for the timeline
+%% Arg1: Year
+\newcommand{\drawVertTics}[1]{%
+%% X pos
+\pgfmathsetlengthmacro{\pos}{(#1 - \constStartYear)*\constMminYear}
+\draw[ultra thin,densely dotted] (\pos, 1cm) -- (\pos, .9\textheight);
+\node at (\pos, 0) {#1};
+}
+
+%% Painters
+\colorlet{lifespancolorpa}{ForestGreen}
+%% Event color
+\colorlet{eventcolor}{Brown}
+%% Paper color
+\colorlet{papercolor}{MidnightBlue}
+
+\newcommand{\colsign}[1]{\colorbox{#1}{\hspace*{1cm}}}
+\newsavebox{\legend}
+\savebox{\legend}{\Large\itshape\parbox{7cm}{%
+\begin{itemize}
+\item[\colsign{eventcolor}] Historical events
+\item[\colsign{papercolor}] Papers
+\item[\colsign{lifespancolorpa}] Paintings
+\end{itemize}}}
+
+
+%% Updates shift
+\newcommand{\updateshift}[1][3.3cm]{\pgfmathsetlengthmacro{\myshift}{\myshift + #1}}
+
+\noindent\begin{tikzpicture}[x=1mm,y=1mm]
+\pgfmathsetlengthmacro{\xshift}{0mm}
+\pgfmathsetlengthmacro{\constLifeSpanHeight}{3mm}
+\pgfmathsetmacro{\constStartYear}{1740}%
+\pgfmathsetmacro{\constStopYear}{1984}%
+\pgfmathsetlengthmacro{\myshift}{2.5cm}%
+%% Scale: points in one year
+\pgfmathsetlengthmacro{\constMminYear}{.9\textwidth/(\constStopYear-\constStartYear)}
+%% Grid
+\foreach \i in {1740,1800,...,1980} {
+\drawVertTics{\i}
+}
+\begin{scope}[yshift=\myshift]
+\pgfmathsetlengthmacro{\xshift}{-.7cm}
+\putEvent{1789}{1789}{French Revolution}{eventcolor}{http://en.wikipedia.org/wiki/French_revolution}{-1}
+\pgfmathsetlengthmacro{\xshift}{-1.5cm}
+\putEvent[-1]{1793}{1794}{Reign of Terror}{eventcolor}{http://en.wikipedia.org/wiki/Reign_of_Terror}{-1}
+\pgfmathsetlengthmacro{\xshift}{.3cm}
+\putEvent{1814}{1815}{Congress of Vienna}{eventcolor}{http://en.wikipedia.org/wiki/Vienna_congress}{-1}
+\pgfmathsetlengthmacro{\xshift}{-2cm}
+\putEvent[-1]{1830}{1848}{July Monarhcy in France (Louis Philippe)}{eventcolor}{http://en.wikipedia.org/wiki/Louis_Philippe_I}{-1}
+\putEvent{1864}{1864}{Second Schleswig War}{eventcolor}{http://en.wikipedia.org/wiki/Second_Schleswig_War}{-1}
+\putEvent[-1]{1871}{1871}{Unification of Germany}{eventcolor}{http://en.wikipedia.org/wiki/Unification_of_Germany}{-1}
+\pgfmathsetlengthmacro{\xshift}{-.7cm}
+\putEvent{1914}{1918}{World War I}{eventcolor}{http://en.wikipedia.org/wiki/World_War_I}{-1}
+\putEvent[-1]{1918}{1920}{1918 flu pandemic}{eventcolor}{http://en.wikipedia.org/wiki/1918_flu_pandemic}{-1}
+\putEvent{1939}{1945}{World War II}{eventcolor}{http://en.wikipedia.org/wiki/World_War_II}{-1}
+\pgfmathsetlengthmacro{\xshift}{1.5cm}
+\putEvent[-1]{1947}{1947}{Dialectic of Enlightenment}{papercolor}{http://en.wikipedia.org/wiki/Dialectic_of_Enlightenment}{-1}
+\end{scope}
+\updateshift
+\begin{scope}[yshift=\myshift]
+\putEvent[-1]{1784}{1784}{Answering the Question: What is Enlightenment?}{papercolor}{http://en.wikipedia.org/wiki/Answering_the_Question:_What_is_Enlightenment\%253F}{-1}
+\putEvent[-1]{1853}{1870}{Haussmann's renovation of Paris}{eventcolor}{http://en.wikipedia.org/wiki/Haussmann's_renovation_of_Paris}{-1}
+\putEvent[-1]{1921}{1921}{Tractatus Logico-Philosophicus}{papercolor}{https://en.wikipedia.org/wiki/Tractatus_Logico-Philosophicus}{-1}
+\putEvent{1927}{1927}{To the Lighthouse}{papercolor}{http://en.wikipedia.org/wiki/To_the_Lighthouse}{-1}
+\putEvent[-1]{1969}{1969}{On Certainty}{papercolor}{http://en.wikipedia.org/wiki/On_Certainty}{-1}
+\end{scope}
+\updateshift[2.2cm]
+\begin{scope}[yshift=\myshift]
+\putEvent[-1]{1848}{1848}{French Revolution}{eventcolor}{http://en.wikipedia.org/wiki/Revolutions_of_1848_in_France}{-1}
+\putEvent{1848}{1848}{June Days Uprising}{eventcolor}{http://en.wikipedia.org/wiki/June_Days_Uprising}{2.7cm}
+\putEvent{1866}{1866}{Austro-Prussian War}{eventcolor}{http://en.wikipedia.org/wiki/Austro-Prussian_War}{2.5cm}
+\pgfmathsetlengthmacro{\xshift}{1.7cm}
+\putEvent[-1]{1870}{1871}{Franco-Prussian War}{eventcolor}{http://en.wikipedia.org/wiki/Franco-Prussian_War}{-1}
+\end{scope}
+\begin{scope}[yshift=\myshift]
+\pgfmathsetlengthmacro{\xshift}{1.8cm}
+\putEvent{1750}{1750}{Discourse on the Arts and Sciences}{papercolor}{http://en.wikipedia.org/wiki/Discourse_on_the_Arts_and_Sciences}{-1}
+\pgfmathsetlengthmacro{\xshift}{3cm}
+\putEvent[-1]{1755}{1755}{Discourse on the Origin and Basis of Inequality Among Men}{papercolor}{http://en.wikipedia.org/wiki/Discourse_on_the_Origin_of_Inequality}{-1}
+\putEvent{1824}{1824}{The Massacre at Chios}{lifespancolorpa}{http://en.wikipedia.org/wiki/The_Massacre_at_Chios}{3.8cm}
+\putEvent[-2]{1830}{1830}{Liberty Leading the People}{lifespancolorpa}{http://en.wikipedia.org/wiki/Liberty_Leading_the_People}{-1}
+\putEvent{1899}{1899}{The Interpretation of Dreams}{papercolor}{http://en.wikipedia.org/wiki/The_Interpretation_of_Dreams}{-1}
+\putEvent[2]{1930}{1930}{Civilization and Its Discontents}{papercolor}{http://en.wikipedia.org/wiki/Civilization_and_Its_Discontents}{-1}
+\putEvent{1953}{1953}{Philosophical Investigations}{papercolor}{http://en.wikipedia.org/wiki/Philosophical_Investigations}{-1}
+\putEvent[-1]{1964}{1964}{Madness and Civilization}{papercolor}{http://en.wikipedia.org/wiki/Madness_and_Civilization}{-1}
+\pgfmathsetlengthmacro{\xshift}{-3cm}
+\putEvent[2]{1984}{1984}{What is Enlightenment?}{papercolor}{http://en.wikipedia.org/wiki/Answering_the_Question:_What_is_Enlightenment\%253F}{-1}
+\end{scope}
+\updateshift[4.5cm]
+\begin{scope}[yshift=\myshift]
+\putEvent[-1]{1887}{1887}{On the Genealogy of Morality}{papercolor}{http://en.wikipedia.org/wiki/On_the_Genealogy_of_Morals}{-1}
+\putEvent{1830}{1830}{Self-Reliance}{papercolor}{https://en.wikipedia.org/wiki/Self-Reliance}{-1}
+\pgfmathsetlengthmacro{\xshift}{-.8cm}
+\putEvent[-1]{1844}{1844}{Experience}{papercolor}{https://en.wikipedia.org/wiki/Experience_(Emerson)}{-1}
+\putEvent[2]{1848}{1848}{The Communist Manifesto}{papercolor}{http://en.wikipedia.org/wiki/The_Communist_Manifesto}{-1}
+\pgfmathsetlengthmacro{\xshift}{-1.7cm}
+\putEvent[-2]{1856}{1856}{Madame Bovary}{papercolor}{http://en.wikipedia.org/wiki/Madame_Bovary}{-1}
+\pgfmathsetlengthmacro{\xshift}{2.6cm}
+\putEvent[-2]{1859}{1859}{On the Origin of Species}{papercolor}{http://en.wikipedia.org/wiki/On_the_Origin_of_Species}{-1}
+\pgfmathsetlengthmacro{\xshift}{-1.6cm}
+\putEvent{1869}{1869}{Le Spleen de Paris}{papercolor}{http://en.wikipedia.org/wiki/Paris_Spleen}{3cm}
+\pgfmathsetlengthmacro{\xshift}{2.2cm}
+\putEvent{1871}{1871}{The Descent of Man}{papercolor}{http://en.wikipedia.org/wiki/Descent_of_man}{-1}
+\end{scope}
+\node[font=\Huge\scshape\bfseries,fill=blue!20,rounded corners] at (.5\textwidth, 167) {1750 -- 1984};
+\node at (55,140) { \usebox{\legend} };
+\end{tikzpicture}
+
+\bigskip
+
+\centerline{\ccbysa\ \href{http://www.vrepin.org}{Vitaly Repin}, 2013. Own work.}
+
+\end{document}

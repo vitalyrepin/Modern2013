@@ -12,11 +12,11 @@
    hyperlink node/.style={
        alias=sourcenode,
        append after command={
-           let     \p1 = (sourcenode.north west),
-               \p2=(sourcenode.south east),
+           let     \p1 = (sourcenode.south west),
+               \p2=(sourcenode.north east),
                \n1={\x2-\x1},
-               \n2={\y1-\y2} in
-           node [inner sep=0pt, outer sep=0pt,anchor=north west,at=(\p1)] {\href{#1}{\phantom{\rule{\n1}{\n2}}}}
+               \n2={\y2-\y1} in
+           node [inner sep=0pt, outer sep=0pt,anchor=south west,at=(\p1)] {\href{#1}{\phantom{\rule{\n1}{\n2}}}}
        }
    }
 }
