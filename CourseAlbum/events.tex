@@ -146,8 +146,12 @@
 \end{scope}
 \updateshift
 \begin{scope}[yshift=\myshift]
+\pgfmathsetlengthmacro{\xshift}{-1cm}
 \putEvent[-1]{1921}{1921}{Tractatus Logico-Philosophicus}{papercolor}{https://en.wikipedia.org/wiki/Tractatus_Logico-Philosophicus}{-1}
+\pgfmathsetlengthmacro{\xshift}{-1cm}
+\putEvent[-1]{1953}{1953}{Philosophical Investigations}{papercolor}{http://en.wikipedia.org/wiki/Philosophical_Investigations}{-1}
 \putEvent{1927}{1927}{To the Lighthouse}{papercolor}{http://en.wikipedia.org/wiki/To_the_Lighthouse}{-1}
+\pgfmathsetlengthmacro{\xshift}{1cm}
 \putEvent[-1]{1969}{1969}{On Certainty}{papercolor}{http://en.wikipedia.org/wiki/On_Certainty}{-1}
 \end{scope}
 \updateshift[2.2cm]
@@ -155,11 +159,11 @@
 \end{scope}
 \begin{scope}[yshift=\myshift]
 \putEvent{1899}{1899}{The Interpretation of Dreams}{papercolor}{http://en.wikipedia.org/wiki/The_Interpretation_of_Dreams}{-1}
-\putEvent[2]{1930}{1930}{Civilization and Its Discontents}{papercolor}{http://en.wikipedia.org/wiki/Civilization_and_Its_Discontents}{-1}
-\putEvent{1953}{1953}{Philosophical Investigations}{papercolor}{http://en.wikipedia.org/wiki/Philosophical_Investigations}{-1}
+\pgfmathsetlengthmacro{\xshift}{.5cm}
+\putEvent{1930}{1930}{Civilization and Its Discontents}{papercolor}{http://en.wikipedia.org/wiki/Civilization_and_Its_Discontents}{-1}
 \putEvent[-1]{1964}{1964}{Madness and Civilization}{papercolor}{http://en.wikipedia.org/wiki/Madness_and_Civilization}{-1}
 \pgfmathsetlengthmacro{\xshift}{-3cm}
-\putEvent[2]{1984}{1984}{What is Enlightenment?}{papercolor}{http://en.wikipedia.org/wiki/Answering_the_Question:_What_is_Enlightenment\%253F}{-1}
+\putEvent{1984}{1984}{What is Enlightenment?}{papercolor}{http://en.wikipedia.org/wiki/Answering_the_Question:_What_is_Enlightenment\%253F}{-1}
 \end{scope}
 \updateshift[4.5cm]
 \begin{scope}[yshift=\myshift]

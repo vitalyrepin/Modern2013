@@ -51,7 +51,7 @@
 \newcommand{\drawVertTics}[1]{%
 %% X pos
 \pgfmathsetlengthmacro{\pos}{(#1 - \constStartYear)*\constMminYear}
-\draw[ultra thin,densely dotted] (\pos, 1cm) -- (\pos, .9\textheight);
+\draw[thin,densely dotted] (\pos, 1cm) -- (\pos, .9\textheight);
 \node at (\pos, 0) {#1};
 }
 
