@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="nl" lang="nl" >
+<head  profile="http://www.w3.org/2005/10/profile" >
+  <title> ${page_title} </title>
+  <meta name="robots" content="index, follow" />    
+  <meta name="lang" content="NL" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="generator" content="http://txt2tags.org" />
+  <meta name="description" content="${page_description}" />
+  <meta name="keywords" content="${page_keywords}" />
+  <meta name="date" content="${page_source_mtime}" />
+  <link rel="icon" type="image/png" href="${path_to_root}include/images/favicon.png" />
+  <link href="${path_to_root}include/css/style.css" rel="stylesheet" type="text/css" />
+  <link href="${path_to_root}include/css/print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+
+<!-- =========================================================================== -->
+
+<body >
+
+<div id="div_body" >
+
+<a name="anchor_at_top" id="anchor_at_top" >  </a>
+
+<div id="div_koptekst" >
+     <br />
+     <p class="header1" > ${page_header1}</p>
+     <p class="header2" > ${page_header2} </p>
+     <p class="header2" > <a href="../index.html">Home</a></p>
+</div> 
+
+<div id="div_hoofdvak" > 
+    $(html_content_div 1) 
+    <a id="link_to_top" href="#anchor_at_top" title="Top of Content" > ^ </a>
+</div>  <!-- end hoofdvak -->
+
+<div id="div_voet" >
+   <span>  Webdesign 2013 </span>
+   <span>  Powered by Txt2Site </span>
+   <span>  Last changed: ${page_source_mtime} </span>
+</div>     
+
+</div>  <!-- end div_body -->
+
+</body>
+</html>
+
