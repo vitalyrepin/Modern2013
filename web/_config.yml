@@ -1,0 +1,76 @@
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink: "/:title"
+relative_permalinks: true
+
+highlighter: pygments
+
+timezone: Europe/Helsinki
+
+# Default YAML frontmatter settings
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      comments: true
+
+
+# Facebook settings
+fb_admins:          606660677
+avatar:             "/public/images/album.png"
+locale:             en_US
+
+# Image settings
+image_base:          /public/images/
+
+# Do not copy these file to the output directory
+exclude: ["transfer.sh", README.md]
+
+#fb_appid:           337414769782635
+
+# Setup
+title:               The Modern and the Postmodern course
+tagline:             Additional nonofficial resources (by Vitaly Repin)
+url:                 "http://vrepin.org"
+baseurl:             "/studies/ModernPostmodern/WebSite"
+
+# Assets
+#
+# We specify the directory for Jekyll so we can use @imports.
+sass:
+  sass_dir:          _sass
+  style:            :compressed
+
+# About/contact
+author:
+  name:              Vitaly Repin
+  url:               https://twitter.com/vitalyrepin
+  email:             vitaly_repin@fsfe.org
+
+# Custom vars
+version:             1.0.0
+github:
+  repo:              https://github.com/vitalyrepin/vrepinblog
+
+# Google sitemap generation
+gems:
+  - jekyll-sitemap
+
+# Conversion
+markdown:    redcarpet
+excerpt_separator: "<!--break-->"
+
+redcarpet:
+  extensions: ["footnotes"]
+
+kramdown:
+  auto_ids: true
+
+pages_list:
+  Essays: '/studies/ModernPostmodern/WebSite/essays/'
+  Album:  '/studies/ModernPostmodern/WebSite/album/'
+  Timelines: '/studies/ModernPostmodern/WebSite/timelines/'
+  About: '/studies/ModernPostmodern/WebSite/about/'

@@ -1,0 +1,24 @@
+---
+title: Timelines
+layout: default
+permalink: timelines/
+summary: The Modern and the Postmodern course. Timelines (events and lifespans).
+---
+
+== Timelines ==
+
+=== Interactive timeline ===
+- [Lifespans, Events, Papers, Paintings. Interactive timeline http://www.tiki-toki.com/timeline/entry/158086/The-Modern-and-the-Postmodern/]
+
+
+=== PDF Timeline ===
+
+- [Events {{ site.baseurl }}/public/pdf/events.pdf] and [lifespans {{ site.baseurl }}/public/pdf/lifespans.pdf]
+- [Sources https://github.com/vitalyrepin/Modern2013/tree/master/Timelines]
+
+
+=== Hard copy ===
+
+[Course album {{ site.baseurl }}/album] includes historical timelines.
+
+

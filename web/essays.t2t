@@ -1,0 +1,23 @@
+---
+title: Essays
+layout: default
+permalink: essays/
+summary: The Modern and the Postmodern course. Sample essays.
+
+---
+
+== Sample Essays ==
+
+My essays written for the course.
+
+Please, take them as examples ONLY. Don't copy them to your own works. Read [Why Plagiarism is Wrong! http://tlt.psu.edu/plagiarism/student-tutorial/why-plagiarism-is-wrong/]
+
+- [Jean-Jacques Rousseau's influence on Immanuel Kant {{ site.baseurl }}/public/pdf/kantrousseau.pdf]
+- [Kant and Flaubert on the role of historical progress {{ site.baseurl }}/kantflaubert/]
+- [Marx and Darwin. Thinkers in historical context {{ site.baseurl }}/marxdarwin/]
+- [Charles Baudelaire and Sigmund Freud on Art {{ site.baseurl }}/freudbadelaire/]
+- [Nietzsche and Frankfurt School critical theory on the idea of domination {{ site.baseurl }}/nietzschefrankfurt/]
+- [Wittgenstein and Woolf. Approach to the ordinary {{ site.baseurl }}/wittwolf/]
+- [Butler and Foucault on the constraints of creativity and self-invention {{ site.baseurl }}/butlerfocault/]
+
+
